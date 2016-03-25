@@ -8,3 +8,42 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.
 
 !ENTRY org.eclipse.core.net 1 0 2016-03-25 21:02:51.272
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2016-03-25 21:41:32.245 -----------------------------------------------
+eclipse.buildId=debbuild
+java.version=1.7.0_95
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2016-03-25 21:43:45.983
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2016-03-25 21:43:45.983
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-03-25 21:43:45.983
+!MESSAGE Software being installed: Git Team Provider - experimental auto-import (Incubation) 4.2.0.201601211800-r (org.eclipse.egit.ui.importer 4.2.0.201601211800-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-03-25 21:43:45.983
+!MESSAGE Missing requirement: Import framework 0.2.0.v20151123-1229 (org.eclipse.e4.ui.importer 0.2.0.v20151123-1229) requires 'bundle org.eclipse.core.jobs 3.7.0' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-03-25 21:43:45.983
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-03-25 21:43:45.983
+!MESSAGE From: Git Team Provider - experimental auto-import (Incubation) 4.2.0.201601211800-r (org.eclipse.egit.ui.importer 4.2.0.201601211800-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-03-25 21:43:45.983
+!MESSAGE To: bundle org.eclipse.e4.ui.importer 0.1.0
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2016-03-25 21:43:45.988
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2016-03-25 21:43:45.988
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-03-25 21:43:45.988
+!MESSAGE Software being installed: Git Team Provider - experimental auto-import (Incubation) 4.2.0.201601211800-r (org.eclipse.egit.ui.importer 4.2.0.201601211800-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-03-25 21:43:45.988
+!MESSAGE Missing requirement: Import framework 0.2.0.v20151123-1229 (org.eclipse.e4.ui.importer 0.2.0.v20151123-1229) requires 'bundle org.eclipse.core.jobs 3.7.0' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-03-25 21:43:45.989
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-03-25 21:43:45.989
+!MESSAGE From: Git Team Provider - experimental auto-import (Incubation) 4.2.0.201601211800-r (org.eclipse.egit.ui.importer 4.2.0.201601211800-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-03-25 21:43:45.989
+!MESSAGE To: bundle org.eclipse.e4.ui.importer 0.1.0
+
+!ENTRY org.eclipse.jdt.launching 1 0 2016-03-25 21:45:36.445
+!MESSAGE Installed JRE 'Java SE 7 [1.7.0_71]' removed due to missing VM type extension.
