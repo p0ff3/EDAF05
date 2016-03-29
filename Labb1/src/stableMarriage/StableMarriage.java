@@ -11,8 +11,9 @@ public class StableMarriage {
 		manList = new LinkedList<Man>();
 	}
 
-	public void readCouplesFromFile(String path) {
-
+	public void readCouplesFromFile(String path) throws FileNotFoundException {
+		Parser p = new Parser(path);
+		p.parse(manList);
 	}
 	
 	//Printar till filen path
@@ -20,7 +21,7 @@ public class StableMarriage {
 		try{
 			BufferedWriter out = new BufferedWriter(new FileWriter(path));
 			for (Man m : manList){
-				out.write(m.toString() + "\n");
+				out.write(m.toString());
 				//out.newLine(); Oklart om detta behövs
 			}
 			out.close();

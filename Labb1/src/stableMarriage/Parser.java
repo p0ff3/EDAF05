@@ -1,5 +1,6 @@
 package stableMarriage;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -13,14 +14,18 @@ public class Parser {
 
 	public Parser(String path) throws FileNotFoundException {
 		this.path = path;
-		sc = new Scanner(path);
+		sc = new Scanner(new File(path));
 
 	}
 
 	public void parse(List<Man> manList) {
 		List<Woman> womanList = new ArrayList<Woman>();
-		String nEquals = sc.next(Pattern.compile("\\[n]{1}[=]{1}\\d"));
-		int noOfCouples = nEquals.indexOf(2);
+		while(!sc.hasNext(Pattern.compile("n{1}[=]{1}\\d+"))){
+			sc.nextLine();
+		}
+		String nEquals = sc.findInLine(Pattern.compile("n{1}[=]{1}\\d+"));
+		String couples = nEquals.substring(2);
+		int noOfCouples = Integer.parseInt(couples);
 		System.out.println("Number of couples: " + noOfCouples);
 
 		while (sc.hasNext(Pattern.compile("\\d+\\ \\w+"))) {
@@ -34,6 +39,7 @@ public class Parser {
 				manList.add(new Man(id, person[1]));
 			}
 		}
+		@SuppressWarnings("resource")
 		Scanner prioScanner = new Scanner(path);
 		while (prioScanner.hasNext(Pattern.compile("\\d+:( \\d+)+"))) {
 
@@ -41,17 +47,16 @@ public class Parser {
 			String[] prioList = str.split(" ");
 			int id = Integer.parseInt(prioList[0].substring(0,
 					prioList[0].length() - 1));
-			if (id % 2 == 0) {
-				// Denna linen.
+			if (!(id % 2 == 0)) {
 				Man m = manList.get(id);
 				for (int i = 1; i < noOfCouples; i++) {
-					// Är nästan lika bra som denna
 					m.addWomanAtEndOfList(womanList.get(Integer
 							.parseInt(prioList[i]) / 2));
 				}
 			} else {
-				for(int i = 1; i < noOfCouples; i++){
-				womanList.get(id).addManToMap(manList.get(Integer.parseInt(prioList[i])), i);
+				for (int i = 1; i < noOfCouples; i++) {
+					womanList.get(id).addManToMap(
+							manList.get(Integer.parseInt(prioList[i])/2), i);
 				}
 			}
 		}

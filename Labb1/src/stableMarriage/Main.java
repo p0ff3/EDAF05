@@ -1,13 +1,17 @@
 package stableMarriage;
 
+import java.io.FileNotFoundException;
+
 public class Main {
 
 	/**
 	 * @param args
+	 * @throws FileNotFoundException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		StableMarriage SM = new StableMarriage();
-		SM.readCouplesFromFile(args[0]);
+		SM.readCouplesFromFile("testFiles/data/sm-friends-in.txt");
+		SM.writeSMToConsole();
 		SM.writeSMToFile(args[1]);
 
 		//StableMarriage SM = new StableMarriage();
