@@ -14,5 +14,16 @@ public class StableMarriage {
 	public void writeStableMatchingToFile(String path){
 
 	}
+	
+	public void marrypepes(){
+		boolean everyoneIsMarried = true;
+		do{
+		for(Man m : manList){
+			if(!m.isMarried())
+				everyoneIsMarried = false;
+				m.getMarried();
+		}
+		}while(!everyoneIsMarried);
+	}
 
 }
