@@ -30,7 +30,7 @@ public class SimpleParser {
 				continue;
 			} else if (id.length() == 1) { // ADDA NYTT FOLK
 				if (Integer.parseInt(id) % 2 == 0) {
-					mens.add(new Man(Integer.parseInt(id) / 2, kappa.nextToken()));
+					mens.add(new Man(Integer.parseInt(id) / 2, kappa.nextToken())); //VAFAN HÄNDER HÄR
 					System.out.println("hohyo");
 				} else {
 					clearlyMens.add(new Woman(Integer.parseInt(id), kappa
