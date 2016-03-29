@@ -5,4 +5,10 @@ public class Woman {
 		
 	}
 
+	public boolean propose() {
+		// TODO Auto-generated method stub
+		return false;
+		
+	}
+
 }
