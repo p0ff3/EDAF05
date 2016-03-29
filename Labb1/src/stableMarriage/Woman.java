@@ -19,11 +19,7 @@ public class Woman {
 	}
 
 	public boolean propose(int id) {
-		if (husbandId == -1) {
-			husbandId = id;
-			return true;
-		}
-		if (manPrio.get(id) > manPrio.get(husbandId)) {
+		if (manPrio.get(id) > manPrio.get(husbandId) || husbandId == -1) {
 			husbandId = id;
 			return true;
 		}

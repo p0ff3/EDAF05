@@ -23,9 +23,10 @@ public class StableMarriage {
 		do {
 			everyoneIsMarried = true;
 			for (Man m : manList) {
-				if (!m.isMarried())
+				if (!m.isMarried()){
 					everyoneIsMarried = false;
-				m.getMarried();
+					m.getMarried();
+				}
 			}
 		} while (!everyoneIsMarried);
 	}
