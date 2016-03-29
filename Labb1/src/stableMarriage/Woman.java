@@ -6,24 +6,28 @@ import java.util.Map;
 public class Woman {
 	private int id;
 	Map<Integer, Integer> manPrio;
-	Man husband;
-	
-	public Woman(){
+	private int husbandId;
+
+	public Woman() {
 		this.id = id;
 		manPrio = new HashMap<Integer, Integer>();
-		husband = null;
+		husbandId = -1;
 	}
-	
-	public void addManToMap(Man m, int prio){
+
+	public void addManToMap(Man m, int prio) {
 		manPrio.put(m.getId(), prio);
 	}
 
-	public boolean propose() {
-		// TODO Auto-generated method stub
+	public boolean propose(int id) {
+		if (husbandId == -1) {
+			husbandId = id;
+			return true;
+		}
+		if (manPrio.get(id) > manPrio.get(husbandId)) {
+			husbandId = id;
+			return true;
+		}
 		return false;
-		
 	}
-	
-	
 
 }

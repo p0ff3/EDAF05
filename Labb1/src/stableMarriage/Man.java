@@ -21,7 +21,7 @@ public class Man {
 
 	public void getMarried() {
 			Woman w = womanPrio.poll();
-			if (w.propose()) {
+			if (w.propose(id)) {
 				wife = w;
 				marriedStatus = true;
 			}
