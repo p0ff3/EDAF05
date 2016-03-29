@@ -39,18 +39,20 @@ public class Parser {
 
 			String str = prioScanner.next(Pattern.compile("\\d+:( \\d+)+"));
 			String[] prioList = str.split(" ");
-			if (Integer.parseInt(prioList[0].substring(0,
-					prioList[0].length() - 1)) % 2 == 0) {
+			int id = Integer.parseInt(prioList[0].substring(0,
+					prioList[0].length() - 1));
+			if (id % 2 == 0) {
 				// Denna linen.
-				Man m = manList.get(Integer.parseInt(prioList[0].substring(0,
-						prioList[0].length() - 1)));
+				Man m = manList.get(id);
 				for (int i = 1; i < noOfCouples; i++) {
 					// Är nästan lika bra som denna
 					m.addWomanAtEndOfList(womanList.get(Integer
 							.parseInt(prioList[i]) / 2));
 				}
 			} else {
-				
+				for(int i = 1; i < noOfCouples; i++){
+				womanList.get(id).addManToMap(manList.get(Integer.parseInt(prioList[i])), i);
+				}
 			}
 		}
 
