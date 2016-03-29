@@ -15,7 +15,7 @@ public class Woman {
 	}
 	
 	public void addManToMap(Man m, int prio){
-		manPrio.add(m.getId(), prio);
+		manPrio.put(m.getId(), prio);
 	}
 
 	public boolean propose() {

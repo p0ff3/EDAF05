@@ -4,7 +4,6 @@ import java.util.LinkedList;
 
 public class Man {
 	private int id;
-	boolean married = false;
 	Woman wife;
 	private boolean marriedStatus;
 	LinkedList<Woman> womanPrio;
@@ -13,6 +12,7 @@ public class Man {
 		this.id = id;
 		womanPrio = new LinkedList<Woman>();
 		wife = null;
+		marriedStatus = false;
 	}
 
 	public void addWomanAtEndOfList(Woman w) {
@@ -23,13 +23,13 @@ public class Man {
 			Woman w = womanPrio.poll();
 			if (w.propose()) {
 				wife = w;
-				married = true;
+				marriedStatus = true;
 			}
 	}
 
 	public void divorce() {
 		wife = null;
-		married = false;
+		marriedStatus = false;
 		getMarried();
 	}
 	
