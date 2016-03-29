@@ -1,14 +1,47 @@
 package acceptanceTests;
 
+import org.junit.Test;
 import static org.junit.Assert.*;
 
-import org.junit.Test;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
-public class AccTest {
+import junit.framework.TestCase;
+
+import stableMarriage.Main;
+
+public class AccTest extends TestCase {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testFriends() throws FileNotFoundException {
+		String[] arguments = new String[] { "data/sm-friends-in.txt",
+				"output/java-friends-out.txt" };
+
+		Main.main(arguments);
+		assertEquals("Friends not properly married", new FileReader(
+				"data/sm-friends-out.txt"), new FileReader(
+				"output/java-friends-out.txt"));
 	}
 
+	@Test
+	public void testIlliad() throws FileNotFoundException {
+		String[] arguments = new String[] { "data/sm-illiad-in.txt",
+				"output/java-illiad-out.txt" };
+
+		Main.main(arguments);
+		assertEquals("Friends not properly married", new FileReader(
+				"data/sm-illiad-out.txt"), new FileReader(
+				"output/java-illiad-out.txt"));
+	}
+
+	@Test
+	public void testRandom50() throws FileNotFoundException {
+		String[] arguments = new String[] { "data/sm-random-50-in.txt",
+				"output/java-random-50-out.txt" };
+
+		Main.main(arguments);
+		assertEquals("Friends not properly married", new FileReader(
+				"data/sm-random-50-out.txt"), new FileReader(
+				"output/java-random-50-out.txt"));
+	}
 }

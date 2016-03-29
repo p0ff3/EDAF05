@@ -6,8 +6,11 @@ public class StableMarriage {
 	public StableMarriage(){
 
 	}
-	public String getStableMatching(List Men, List Women){
-		return "";
+	public void readCouplesFromFile(String path){
+		
+	}
+	public void writeStableMatchingToFile(String path){
+
 	}
 
 }
