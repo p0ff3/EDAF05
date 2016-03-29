@@ -6,11 +6,13 @@ public class Man {
 	private int id;
 	boolean married = false;
 	Woman wife;
+	private boolean marriedStatus;
 	LinkedList<Woman> womanList;
 
 	public Man(int id) {
 		this.id = id;
 		womanList = new LinkedList<Woman>();
+		wife = null;
 	}
 
 	public void addWomanAtEndOfList(Woman w) {
@@ -35,6 +37,10 @@ public class Man {
 	
 	public int getId(){
 		return id;
+	}
+	
+	public boolean isMarried(){
+		return marriedStatus;
 	}
 
 }
