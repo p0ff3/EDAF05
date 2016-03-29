@@ -4,13 +4,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Parser {
-	String path;
-	Scanner sc;
+	private String path;
+	private Scanner sc;
 
 	public Parser(String path) throws FileNotFoundException {
 		this.path = path;
@@ -18,7 +19,7 @@ public class Parser {
 
 	}
 
-	public void parse(List<Man> manList) {
+	public void parse(LinkedList<Man> manList) {
 		List<Woman> womanList = new ArrayList<Woman>();
 		while (!sc.hasNext(Pattern.compile("n{1}[=]{1}\\d+"))) {
 			sc.nextLine();
@@ -27,7 +28,7 @@ public class Parser {
 		String couples = nEquals.substring(2);
 		int noOfCouples = Integer.parseInt(couples);
 		System.out.println("Number of couples: " + noOfCouples);
-		System.out.println(sc.nextLine());
+		//System.out.println(sc.nextLine());
 		while (sc.nextLine() != null) {
 			String str = sc.findInLine(Pattern.compile("\\d+\\ \\w+"));
 			String[] person = {};
@@ -42,7 +43,7 @@ public class Parser {
 			if (id % 2 == 0) {
 				womanList.add(new Woman(id, person[1]));
 			} else {
-				System.out.println("Jag lägger itll man här");
+				System.out.println("Jag lägger till man här");
 				manList.add(new Man(id, person[1]));
 			}
 		}
