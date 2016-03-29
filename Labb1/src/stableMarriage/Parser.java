@@ -20,22 +20,29 @@ public class Parser {
 
 	public void parse(List<Man> manList) {
 		List<Woman> womanList = new ArrayList<Woman>();
-		while(!sc.hasNext(Pattern.compile("n{1}[=]{1}\\d+"))){
+		while (!sc.hasNext(Pattern.compile("n{1}[=]{1}\\d+"))) {
 			sc.nextLine();
 		}
 		String nEquals = sc.findInLine(Pattern.compile("n{1}[=]{1}\\d+"));
 		String couples = nEquals.substring(2);
 		int noOfCouples = Integer.parseInt(couples);
 		System.out.println("Number of couples: " + noOfCouples);
-
-		while (sc.hasNext(Pattern.compile("\\d+\\ \\w+"))) {
-			String person[] = sc.next(Pattern.compile("\\d+\\ \\w+")).split(
-					"\\s+");
+		System.out.println(sc.nextLine());
+		while (sc.nextLine() != null) {
+			String str = sc.findInLine(Pattern.compile("\\d+\\ \\w+"));
+			String[] person = {};
+			if (str != null) {
+				person = str.split("\\s+");
+			}
+			else{
+				break;
+			}
 			int id = Integer.parseInt(person[0]);
+			System.out.println("id: " + id);
 			if (id % 2 == 0) {
 				womanList.add(new Woman(id, person[1]));
 			} else {
-
+				System.out.println("Jag lägger itll man här");
 				manList.add(new Man(id, person[1]));
 			}
 		}
@@ -56,23 +63,10 @@ public class Parser {
 			} else {
 				for (int i = 1; i < noOfCouples; i++) {
 					womanList.get(id).addManToMap(
-							manList.get(Integer.parseInt(prioList[i])/2), i);
+							manList.get(Integer.parseInt(prioList[i]) / 2), i);
 				}
 			}
 		}
-
-	}
-
-	public Man createManFromLine() {
-		return null;
-	}
-
-	public Woman createWomanFromLine() {
-		return null;
-	}
-
-	private String readLine() {
-		return "";
 
 	}
 }

@@ -10,7 +10,7 @@ public class Main {
 	 */
 	public static void main(String[] args) throws FileNotFoundException {
 		StableMarriage SM = new StableMarriage();
-		SM.readCouplesFromFile("testFiles/data/sm-friends-in.txt");
+		SM.readCouplesFromFile(args[0]);
 		SM.writeSMToConsole();
 		SM.writeSMToFile(args[1]);
 

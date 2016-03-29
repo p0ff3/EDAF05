@@ -1,6 +1,5 @@
 package stableMarriage;
 
-import java.awt.List;
 import java.util.LinkedList;
 import java.io.*;
 
@@ -13,7 +12,9 @@ public class StableMarriage {
 
 	public void readCouplesFromFile(String path) throws FileNotFoundException {
 		Parser p = new Parser(path);
+
 		p.parse(manList);
+		//System.out.println("Manlist after parsing: " + manList);
 	}
 	
 	//Printar till filen path
