@@ -1,19 +1,21 @@
 package stableMarriage;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.io.*;
 
 public class StableMarriage {
-	LinkedList<Man> manList;
+	ArrayList<Man> manList;
 
 	public StableMarriage() {
-		manList = new LinkedList<Man>();
+		manList = new ArrayList<>();
 	}
 
-	public void readCouplesFromFile(String path) throws FileNotFoundException {
-		Parser p = new Parser(path);
+	public void readCouplesFromFile(String path) throws IOException {
+		SimpleParser p = new SimpleParser(path);
 
-		p.parse(manList);
+		manList = p.Parsing();
+		System.out.println(manList);
 		//System.out.println("Manlist after parsing: " + manList);
 	}
 	
@@ -22,7 +24,7 @@ public class StableMarriage {
 		try{
 			BufferedWriter out = new BufferedWriter(new FileWriter(path));
 			for (Man m : manList){
-				out.write(m.toString());
+				out.write(m.toString() + "\n");
 				//out.newLine(); Oklart om detta behövs
 			}
 			out.close();

@@ -1,19 +1,20 @@
 package acceptanceTests;
 
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 
 import junit.framework.TestCase;
-
 import stableMarriage.Main;
 
 public class AccTest extends TestCase {
 
 	@Test
-	public void testFriends() throws FileNotFoundException {
+	public void testFriends() throws IOException {
 		String[] arguments = new String[] { "testFiles/data/sm-friends-in.txt",
 				"output/java-friends-out.txt" };
 
@@ -24,7 +25,7 @@ public class AccTest extends TestCase {
 	}
 
 	@Test
-	public void testIlliad() throws FileNotFoundException {
+	public void testIlliad() throws IOException {
 		String[] arguments = new String[] { "testFiles/data/sm-illiad-in.txt",
 				"output/java-illiad-out.txt" };
 
@@ -35,7 +36,7 @@ public class AccTest extends TestCase {
 	}
 
 	@Test
-	public void testRandom50() throws FileNotFoundException {
+	public void testRandom50() throws IOException {
 		String[] arguments = new String[] { "testFiles/data/sm-random-50-in.txt",
 				"output/java-random-50-out.txt" };
 
