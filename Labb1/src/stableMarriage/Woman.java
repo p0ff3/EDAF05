@@ -5,17 +5,17 @@ import java.util.Map;
 
 public class Woman {
 	private int id;
-	Map<Integer, Integer> manList;
+	Map<Integer, Integer> manPrio;
 	Man husband;
 	
 	public Woman(){
 		this.id = id;
-		manList = new HashMap<Integer, Integer>();
+		manPrio = new HashMap<Integer, Integer>();
 		husband = null;
 	}
 	
 	public void addManToMap(Man m, int prio){
-		manList.add(m.getId(), prio);
+		manPrio.add(m.getId(), prio);
 	}
 
 	public boolean propose() {

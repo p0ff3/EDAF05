@@ -7,26 +7,24 @@ public class Man {
 	boolean married = false;
 	Woman wife;
 	private boolean marriedStatus;
-	LinkedList<Woman> womanList;
+	LinkedList<Woman> womanPrio;
 
 	public Man(int id) {
 		this.id = id;
-		womanList = new LinkedList<Woman>();
+		womanPrio = new LinkedList<Woman>();
 		wife = null;
 	}
 
 	public void addWomanAtEndOfList(Woman w) {
-		womanList.add(w);
+		womanPrio.add(w);
 	}
 
 	public void getMarried() {
-		while (!married) {
-			Woman w = womanList.poll();
+			Woman w = womanPrio.poll();
 			if (w.propose()) {
 				wife = w;
 				married = true;
 			}
-		}
 	}
 
 	public void divorce() {
