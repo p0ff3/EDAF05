@@ -20,11 +20,14 @@ public class Man {
 	}
 
 	public void getMarried() {
+		while (this.marriedStatus == false) {
+
 			Woman w = womanPrio.poll();
 			if (w.propose(id)) {
 				wife = w;
 				marriedStatus = true;
 			}
+		}
 	}
 
 	public void divorce() {
@@ -32,12 +35,12 @@ public class Man {
 		marriedStatus = false;
 		getMarried();
 	}
-	
-	public int getId(){
+
+	public int getId() {
 		return id;
 	}
-	
-	public boolean isMarried(){
+
+	public boolean isMarried() {
 		return marriedStatus;
 	}
 
