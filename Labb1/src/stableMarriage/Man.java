@@ -44,5 +44,9 @@ public class Man {
 	public boolean isMarried() {
 		return marriedStatus;
 	}
+	
+	public String toString(){
+		return name + " -- " + wife.getName();
+	}
 
 }

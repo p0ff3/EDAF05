@@ -15,7 +15,7 @@ public class StableMarriage {
 	}
 
 	public void writeStableMatchingToFile(String path) {
-
+		
 	}
 
 	public void marryAllTheMen() {

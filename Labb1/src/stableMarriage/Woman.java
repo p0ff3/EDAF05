@@ -27,5 +27,9 @@ public class Woman {
 		}
 		return false;
 	}
+	
+	public String getName(){
+		return name;
+	}
 
 }
