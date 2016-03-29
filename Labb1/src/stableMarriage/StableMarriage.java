@@ -35,12 +35,13 @@ public class StableMarriage {
 		}
 	}
 
+
 	public void marryAllTheMen() {
 		boolean everyoneIsMarried = true;
 		do {
 			everyoneIsMarried = true;
 			for (Man m : manList) {
-				if (!m.isMarried()){
+				if (!m.isMarried()) {
 					everyoneIsMarried = false;
 					m.getMarried();
 				}

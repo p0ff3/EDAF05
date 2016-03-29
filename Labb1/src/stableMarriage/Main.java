@@ -8,7 +8,7 @@ public class Main {
 	public static void main(String[] args) {
 		StableMarriage SM = new StableMarriage();
 		SM.readCouplesFromFile(args[0]);
-		SM.writeStableMatchingToFile(args[1]);
+		SM.writeSMToFile(args[1]);
 	}
 
 }
