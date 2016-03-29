@@ -7,11 +7,13 @@ public class Woman {
 	private int id;
 	Map<Integer, Integer> manPrio;
 	private int husbandId;
-
-	public Woman() {
+	private String name;
+	
+	public Woman(int id, String name) {
 		this.id = id;
 		manPrio = new HashMap<Integer, Integer>();
 		husbandId = -1;
+		this.name = name;
 	}
 
 	public void addManToMap(Man m, int prio) {

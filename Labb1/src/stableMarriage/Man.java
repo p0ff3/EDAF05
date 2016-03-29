@@ -7,12 +7,13 @@ public class Man {
 	Woman wife;
 	private boolean marriedStatus;
 	LinkedList<Woman> womanPrio;
-
-	public Man(int id) {
+	private String name;
+	public Man(int id, String name) {
 		this.id = id;
 		womanPrio = new LinkedList<Woman>();
 		wife = null;
 		marriedStatus = false;
+		this.name = name;
 	}
 
 	public void addWomanAtEndOfList(Woman w) {
