@@ -17,6 +17,12 @@ public class StableMarriage {
 	public void writeStableMatchingToFile(String path) {
 		
 	}
+	//Printar i konsolen
+	public void writeToConsole(){
+		for (Man m : manList){
+			System.out.println(m.toString() + "\n");
+		}
+	}
 
 	public void marryAllTheMen() {
 		boolean everyoneIsMarried = true;
