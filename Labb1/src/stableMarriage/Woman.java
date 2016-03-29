@@ -8,6 +8,7 @@ public class Woman {
 	Map<Integer, Integer> manPrio;
 	private int husbandId;
 	private String name;
+	private Man husband;
 	
 	public Woman(int id, String name) {
 		this.id = id;
@@ -20,9 +21,17 @@ public class Woman {
 		manPrio.put(m.getId(), prio);
 	}
 
-	public boolean propose(int id) {
-		if (manPrio.get(id) > manPrio.get(husbandId) || husbandId == -1) {
+	public boolean propose(int id, Man m) {
+		if (husbandId == -1){
 			husbandId = id;
+			husband = m;
+			return true;
+		}
+		
+		if (manPrio.get(id) < manPrio.get(husbandId)) {
+			husbandId = id;
+			husband.divorce();
+			husband = m;
 			return true;
 		}
 		return false;

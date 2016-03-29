@@ -24,7 +24,7 @@ public class Man {
 		while (this.marriedStatus == false) {
 
 			Woman w = womanPrio.poll();
-			if (w.propose(id)) {
+			if (w.propose(id, this)) {
 				wife = w;
 				marriedStatus = true;
 			}
@@ -34,7 +34,7 @@ public class Man {
 	public void divorce() {
 		wife = null;
 		marriedStatus = false;
-		getMarried();
+		//getMarried();
 	}
 
 	public int getId() {

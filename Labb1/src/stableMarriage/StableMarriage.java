@@ -48,5 +48,10 @@ public class StableMarriage {
 			}
 		} while (!everyoneIsMarried);
 	}
+	
+	public void addMan(Man m){
+		manList.add(m);
+	}
+	
 
 }
