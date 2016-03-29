@@ -3,7 +3,7 @@ package stableMarriage;
 import java.util.LinkedList;
 
 public class Man {
-	int id;
+	private int id;
 	boolean married = false;
 	Woman wife;
 	LinkedList<Woman> womanList;
@@ -31,6 +31,10 @@ public class Man {
 		wife = null;
 		married = false;
 		getMarried();
+	}
+	
+	public int getId(){
+		return id;
 	}
 
 }
