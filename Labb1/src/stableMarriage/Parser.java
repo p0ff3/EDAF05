@@ -41,7 +41,7 @@ public class Parser {
 			int id = Integer.parseInt(person[0]);
 			System.out.println("id: " + id);
 			if (id % 2 == 0) {
-				womanList.add(new Woman(id, person[1]));
+				womanList.add(new Woman(person[1]));
 			} else {
 				System.out.println("Jag lägger till man här");
 				manList.add(new Man(id, person[1]));

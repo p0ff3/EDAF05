@@ -2,7 +2,6 @@ package stableMarriage;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 public class SimpleParser {
@@ -27,9 +26,6 @@ public class SimpleParser {
 			} else if (tempStr.contains(":")) { 
 				String id = tempStr.substring(0, tempStr.length() - 1);
 				if (Integer.parseInt(id) % 2 == 0) {
-					System.out
-							.println("WOmanID: "
-									+ id);
 					Woman w = women.get((Integer.parseInt(id) -1)/ 2);
 					int manCount = 0;
 					while (lineAsTokens.hasMoreTokens()) {
@@ -38,9 +34,6 @@ public class SimpleParser {
 						manCount++;
 					}
 				} else {
-					System.out
-							.println("ManID:"
-									+ id);
 					Man temp = men.get((Integer.parseInt(id) / 2));
 					while (lineAsTokens.hasMoreTokens()) {
 						temp.addWomanAtEndOfList(women.get((Integer
@@ -50,7 +43,7 @@ public class SimpleParser {
 			} else if (tempStr.contains("=")) {
 			} else {
 				if (Integer.parseInt(tempStr) % 2 == 0) {
-					women.add(new Woman(Integer.parseInt(tempStr), lineAsTokens.nextToken()));
+					women.add(new Woman(lineAsTokens.nextToken()));
 				} else {
 					men.add(new Man(Integer.parseInt(tempStr) / 2, lineAsTokens.nextToken()));
 				}

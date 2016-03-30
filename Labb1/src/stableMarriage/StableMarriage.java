@@ -13,32 +13,26 @@ public class StableMarriage {
 
 	public void readCouplesFromFile(String path) throws IOException {
 		SimpleParser p = new SimpleParser(path);
-
 		manList = p.Parsing();
-		System.out.println("Manlist after parsing: " + manList);
-		//System.out.println("Manlist after parsing: " + manList);
 	}
-	
-	//Printar till filen path
+
 	public void writeSMToFile(String path) {
-		try{
+		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(path));
-			for (Man m : manList){
+			for (Man m : manList) {
 				out.write(m.toString() + "\n");
-				//out.newLine(); Oklart om detta behövs
 			}
 			out.close();
-		}catch (IOException e){
-			
+		} catch (IOException e) {
+
 		}
 	}
-	//Printar i konsolen
-	public void writeSMToConsole(){
-		for (Man m : manList){
+
+	public void writeSMToConsole() {
+		for (Man m : manList) {
 			System.out.println(m.toString());
 		}
 	}
-
 
 	public void marryAllTheMen() {
 		boolean everyoneIsMarried = true;
@@ -52,10 +46,9 @@ public class StableMarriage {
 			}
 		} while (!everyoneIsMarried);
 	}
-	
-	public void addMan(Man m){
+
+	public void addMan(Man m) {
 		manList.add(m);
 	}
-	
 
 }

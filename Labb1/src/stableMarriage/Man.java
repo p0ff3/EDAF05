@@ -38,7 +38,6 @@ public class Man {
 	public void divorce() {
 		wife = null;
 		marriedStatus = false;
-		// getMarried();
 	}
 
 	public int getId() {

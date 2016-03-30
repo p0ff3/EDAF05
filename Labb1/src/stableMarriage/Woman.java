@@ -4,14 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Woman {
-	private int id;
 	Map<Integer, Integer> manPrio;
 	private int husbandId;
 	private String name;
 	private Man husband;
 	
-	public Woman(int id, String name) {
-		this.id = id;
+	public Woman(String name) {
 		manPrio = new HashMap<Integer, Integer>();
 		husbandId = -1;
 		this.name = name;
