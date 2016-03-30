@@ -9,7 +9,6 @@ n=4
 6 Bernadette
 7 Leonard
 8 Priya
-
 1: 2 4 6 8
 2: 1 7 5 3
 3: 6 4 2 8 
