@@ -14,53 +14,49 @@ public class SimpleParser {
 	}
 
 	public ArrayList<Man> Parsing() throws IOException {
-		ArrayList<Man> mens = new ArrayList<>();
-		LinkedList<Woman> clearlyMens = new LinkedList<>();
+		ArrayList<Man> men = new ArrayList<>();
+		ArrayList<Woman> women = new ArrayList<>();
 
 		BufferedReader br = new BufferedReader(new FileReader(path));
-		//String str = br.readLine();
 		String str;
-		int noOfCouples = 0;
-		while ((str = br.readLine()) != null) { // Oklart / fel / kommer köra
-			StringTokenizer kappa = new StringTokenizer(str);
-												// till kenya på x-axel.
-			String id = kappa.nextToken();
-			System.out.println(id);
-			if (id.equals("#")) {
+		while ((str = br.readLine()) != null) { 
+			StringTokenizer lineAsTokens = new StringTokenizer(str);
+			String tempStr = lineAsTokens.nextToken();
+			if (tempStr.equals("#")) {
 				continue;
-			} else if (id.length() == 1) { // ADDA NYTT FOLK
+			} else if (tempStr.contains(":")) { 
+				String id = tempStr.substring(0, tempStr.length() - 1);
 				if (Integer.parseInt(id) % 2 == 0) {
-					mens.add(new Man(Integer.parseInt(id) / 2, kappa.nextToken())); //VAFAN HÄNDER HÄR
-					System.out.println("hohyo");
-				} else {
-					clearlyMens.add(new Woman(Integer.parseInt(id), kappa
-							.nextToken()));
-				}
-			} else if (id.length() == 2) { // PRIOLISTA AKA TINDER
-				if (Integer.parseInt(id.substring(0, id.length()-1)) % 2 == 0) {
-					System.out.println(id);
-					Man temp = mens.get((Integer.parseInt(id.substring(0, id.length()-1)) / 3));
-					while (kappa.hasMoreTokens()) {
-						temp.addWomanAtEndOfList(clearlyMens.get(Integer
-								.parseInt(kappa.nextToken()) / 2));
-					}
-				} else {
-					Woman pussySmoker = clearlyMens
-							.get(Integer.parseInt(id.substring(0, id.length()-1)) / 2);
+					System.out
+							.println("WOmanID: "
+									+ id);
+					Woman w = women.get((Integer.parseInt(id) -1)/ 2);
 					int manCount = 0;
-					while (kappa.hasMoreTokens()) {
-						pussySmoker.addManToMap(mens.get((Integer.parseInt(kappa
-								.nextToken())-1) / 2), manCount);
+					while (lineAsTokens.hasMoreTokens()) {
+						w.addManToMap(men.get(Integer.parseInt(lineAsTokens
+								.nextToken())  / 2), manCount);
 						manCount++;
 					}
+				} else {
+					System.out
+							.println("ManID:"
+									+ id);
+					Man temp = men.get((Integer.parseInt(id) / 2));
+					while (lineAsTokens.hasMoreTokens()) {
+						temp.addWomanAtEndOfList(women.get((Integer
+								.parseInt(lineAsTokens.nextToken()) -1)/ 2));
+					}
 				}
+			} else if (tempStr.contains("=")) {
 			} else {
-				String retard = id.substring(2);
-				//noOfCouples = Integer.parseInt(retard);
+				if (Integer.parseInt(tempStr) % 2 == 0) {
+					women.add(new Woman(Integer.parseInt(tempStr), lineAsTokens.nextToken()));
+				} else {
+					men.add(new Man(Integer.parseInt(tempStr) / 2, lineAsTokens.nextToken()));
+				}
 			}
 		}
-		mens.add(new Man(1337, "kappa"));
-		return mens;
+		return men;
 
 	}
 }

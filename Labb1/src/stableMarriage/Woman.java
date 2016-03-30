@@ -20,6 +20,10 @@ public class Woman {
 	public void addManToMap(Man m, int prio) {
 		manPrio.put(m.getId(), prio);
 	}
+	
+	public String toString(){
+		return name;
+	}
 
 	public boolean propose(int id, Man m) {
 		if (husbandId == -1){

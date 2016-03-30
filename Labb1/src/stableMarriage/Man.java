@@ -8,6 +8,7 @@ public class Man {
 	private boolean marriedStatus;
 	LinkedList<Woman> womanPrio;
 	private String name;
+
 	public Man(int id, String name) {
 		this.id = id;
 		womanPrio = new LinkedList<Woman>();
@@ -16,13 +17,16 @@ public class Man {
 		this.name = name;
 	}
 
+	public void printPrioList() {
+		System.out.println(womanPrio);
+	}
+
 	public void addWomanAtEndOfList(Woman w) {
 		womanPrio.add(w);
 	}
 
 	public void getMarried() {
 		while (this.marriedStatus == false) {
-
 			Woman w = womanPrio.poll();
 			if (w.propose(id, this)) {
 				wife = w;
@@ -34,7 +38,7 @@ public class Man {
 	public void divorce() {
 		wife = null;
 		marriedStatus = false;
-		//getMarried();
+		// getMarried();
 	}
 
 	public int getId() {
@@ -44,9 +48,13 @@ public class Man {
 	public boolean isMarried() {
 		return marriedStatus;
 	}
-	
-	public String toString(){
-		return name + " -- " + wife.getName();
+
+	public String toString() {
+		if (wife != null) {
+			return name + " -- " + wife.getName();
+		} else {
+			return name + " -- null";
+		}
 	}
 
 }

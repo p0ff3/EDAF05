@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -19,9 +20,19 @@ public class AccTest extends TestCase {
 				"output/java-friends-out.txt" };
 
 		Main.main(arguments);
-		assertEquals("Friends not properly married", new FileReader(
-				"testFiles/data/sm-friends-out.txt"), new FileReader(
+
+		Main.main(arguments);
+		BufferedReader br1 = new BufferedReader(new FileReader(
+				"testFiles/data/sm-friends-out.txt"));
+		BufferedReader br2 = new BufferedReader(new FileReader(
 				"output/java-friends-out.txt"));
+		String line1 = br1.readLine();
+		String line2 = br2.readLine();
+		while ((line1 != null) || (line2 != null)) {
+			assertEquals("De är inte korrekt gifta", line1, line2);
+			line1 = br1.readLine();
+			line2 = br2.readLine();
+		}
 	}
 
 	@Test
@@ -30,19 +41,76 @@ public class AccTest extends TestCase {
 				"output/java-illiad-out.txt" };
 
 		Main.main(arguments);
-		assertEquals("Friends not properly married", new FileReader(
-				"testFiles/data/sm-illiad-out.txt"), new FileReader(
+		BufferedReader br1 = new BufferedReader(new FileReader(
+				"testFiles/data/sm-illiad-out.txt"));
+		BufferedReader br2 = new BufferedReader(new FileReader(
 				"output/java-illiad-out.txt"));
+		String line1 = br1.readLine();
+		String line2 = br2.readLine();
+		while ((line1 != null) || (line2 != null)) {
+			assertEquals("De är inte korrekt gifta", line1, line2);
+			line1 = br1.readLine();
+			line2 = br2.readLine();
+		}
 	}
 
 	@Test
 	public void testRandom50() throws IOException {
-		String[] arguments = new String[] { "testFiles/data/sm-random-50-in.txt",
+		String[] arguments = new String[] {
+				"testFiles/data/sm-random-50-in.txt",
 				"output/java-random-50-out.txt" };
 
 		Main.main(arguments);
-		assertEquals("Friends not properly married", new FileReader(
-				"testFiles/data/sm-random-50-out.txt"), new FileReader(
+		BufferedReader br1 = new BufferedReader(new FileReader(
+				"testFiles/data/sm-random-50-out.txt"));
+		BufferedReader br2 = new BufferedReader(new FileReader(
 				"output/java-random-50-out.txt"));
+		String line1 = br1.readLine();
+		String line2 = br2.readLine();
+		while ((line1 != null) || (line2 != null)) {
+			assertEquals("De är inte korrekt gifta", line1, line2);
+			line1 = br1.readLine();
+			line2 = br2.readLine();
+		}
+	}
+
+	@Test
+	public void testRandom500() throws IOException {
+		String[] arguments = new String[] {
+				"testFiles/data/sm-random-500-in.txt",
+				"output/java-random-500-out.txt" };
+
+		Main.main(arguments);
+		BufferedReader br1 = new BufferedReader(new FileReader(
+				"testFiles/data/sm-random-500-out.txt"));
+		BufferedReader br2 = new BufferedReader(new FileReader(
+				"output/java-random-500-out.txt"));
+		String line1 = br1.readLine();
+		String line2 = br2.readLine();
+		while ((line1 != null) || (line2 != null)) {
+			assertEquals("De är inte korrekt gifta", line1, line2);
+			line1 = br1.readLine();
+			line2 = br2.readLine();
+		}
+	}
+
+	@Test
+	public void testWorst500() throws IOException {
+		String[] arguments = new String[] {
+				"testFiles/data/sm-worst-500-in.txt",
+				"output/java-worst-500-out.txt" };
+
+		Main.main(arguments);
+		BufferedReader br1 = new BufferedReader(new FileReader(
+				"testFiles/data/sm-worst-500-out.txt"));
+		BufferedReader br2 = new BufferedReader(new FileReader(
+				"output/java-worst-500-out.txt"));
+		String line1 = br1.readLine();
+		String line2 = br2.readLine();
+		while ((line1 != null) || (line2 != null)) {
+			assertEquals("De är inte korrekt gifta", line1, line2);
+			line1 = br1.readLine();
+			line2 = br2.readLine();
+		}
 	}
 }

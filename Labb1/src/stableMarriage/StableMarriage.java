@@ -15,7 +15,7 @@ public class StableMarriage {
 		SimpleParser p = new SimpleParser(path);
 
 		manList = p.Parsing();
-		System.out.println(manList);
+		System.out.println("Manlist after parsing: " + manList);
 		//System.out.println("Manlist after parsing: " + manList);
 	}
 	
@@ -35,7 +35,7 @@ public class StableMarriage {
 	//Printar i konsolen
 	public void writeSMToConsole(){
 		for (Man m : manList){
-			System.out.println(m.toString() + "\n");
+			System.out.println(m.toString());
 		}
 	}
 
