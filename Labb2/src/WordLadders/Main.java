@@ -10,7 +10,7 @@ public class Main {
 		wl.addWordtoList("where");
 		wl.addWordtoList("there");
 		boolean result;
-		result = wl.isNeighbors("whrrr","there");
+		result = wl.isNeighbors("where","there");
 		System.out.print(result);
 	}
 }

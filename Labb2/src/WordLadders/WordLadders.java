@@ -21,22 +21,26 @@ public class WordLadders {
 	public void wordTree() {
 
 	}
-
-	// Spelling, verkar funka, dock inte snyggt??
+	
+	/**
+	 * Determines if there is an edge between s1 and s2 using ' ' and '\' as protected characters.
+	 * @param s2
+	 * @param s1 
+	 * @return true if edge, otherwise false
+	 */
 	public boolean isNeighbors(String s1, String s2) {
-		String[] b = new String[4];
-		String[] a = new String[5];
-		for (int k = 0; k < 4; k++) {
-			b[k] = s1.substring(k, k + 1);
-		}
-		for (int i = 0; i < 5; i++) {
-			a[i] = s2.substring(i, i + 1);
-		}
+		char[] a = s1.substring(1, s2.length()).toCharArray();
+		char[] b = s2.toCharArray();
 		int count = 0;
-		for (String sa : a) {
-			for (String sb : b) {
-				if (sa.equals(sb)) {
+		for (int i = 0; i < a.length; i++) {
+			for (int j = 0; j < b.length; j++) {
+				System.out.println(a[i] + "// " +b[j]);
+				if (a[i] == b[j]) {
+					b[j] = ' ';
+					a[i] = '\\';
+					//TODO: Fix solid null-objects here.
 					count++;
+					continue;
 				}
 			}
 		}
