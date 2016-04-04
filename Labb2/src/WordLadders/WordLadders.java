@@ -11,10 +11,15 @@ public class WordLadders {
 	public WordLadders() {
 		words = new HashMap<String, Word>();
 	}
-
 	public void readWordsFromFile(String path) throws IOException {
 		Parser p = new Parser(path);
 		words = p.Parse();
+		setNeighbours();
+	}
+	
+	//TODO: Fixa så alla orden får sina grannar tilldelade.
+	private void setNeighbours(){
+		
 	}
 	
 	/**
