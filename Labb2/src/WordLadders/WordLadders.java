@@ -19,7 +19,7 @@ public class WordLadders {
 	// TODO sätter in alla ord i den datastruktur vi vill ha, vilket förmodligen
 	// är någon slags träd?
 	public void wordTree() {
-
+		
 	}
 	
 	/**
