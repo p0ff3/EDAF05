@@ -2,24 +2,20 @@ package WordLadders;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 
 public class WordLadders {
 	// Vi behöver kanske en klass node och en klass edge för att hålla reda på skit, oklart.
-	ArrayList<String> words;
+	HashMap<String, Word> words;
 
 	public WordLadders() {
-		words = new ArrayList<String>();
+		words = new HashMap<String, Word>();
 	}
 
 	public void readWordsFromFile(String path) throws IOException {
 		Parser p = new Parser(path);
 		words = p.Parse();
-	}
-
-	// TODO sätter in alla ord i den datastruktur vi vill ha, vilket förmodligen
-	// är någon slags träd?
-	public void wordTree() {
-		
 	}
 	
 	/**
@@ -34,13 +30,11 @@ public class WordLadders {
 		int count = 0;
 		for (int i = 0; i < a.length; i++) {
 			for (int j = 0; j < b.length; j++) {
-				System.out.println(a[i] + "// " +b[j]);
 				if (a[i] == b[j]) {
 					b[j] = ' ';
 					a[i] = '\\';
-					//TODO: Fix solid null-objects here.
+					//TODO: Fix solid null-objects here. Use '\0'?
 					count++;
-					continue;
 				}
 			}
 		}
@@ -51,17 +45,30 @@ public class WordLadders {
 		return false;
 	}
 
-	// TODO
-	public String findClosestPath(String s1, String s2) {
-		return "";
-	}
-
-	// TODO
-	public void findAllClosestPaths() {
+	public int findClosestPath(String start, String goal) {
+		LinkedList<Word> Queue= new LinkedList<Word>();
+		Word currentWord = words.get(start);
+		currentWord.setDepth(0);
+		Word goalWord = currentWord;
+		Queue.add(currentWord);
+		while(!Queue.isEmpty()){
+			if(currentWord.isChecked()){
+				currentWord = Queue.poll();
+				continue;
+			}
+			ArrayList<Word>children = currentWord.getNeighbours();
+			for(Word w : children){
+				if(w.equals(goalWord)){
+					return w.getDepth();
+				}
+				Queue.add(w);
+				w.setDepth(currentWord.getDepth() + 1);
+			}
+			currentWord.check();
+			currentWord = Queue.poll();
+		}
 		
+		return 0;
 	}
 
-	public void addWordtoList(String s) {
-		words.add(s);
-	}
 }

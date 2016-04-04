@@ -2,21 +2,20 @@ package WordLadders;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Parser {
 	String path;
 	public Parser(String path){
 		this.path = path;
 	}
-	// String är placehold för test, oklart om den ska returna String.
-	public ArrayList<String> Parse() throws IOException{
-		ArrayList wordList = new ArrayList<String>();
+	public HashMap<String, Word> Parse() throws IOException{
+		HashMap<String, Word> wordList = new HashMap<String, Word>();
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(path));
 			String str;
 			while((str = br.readLine()) != null){
-				wordList.add(str);
-				System.out.println("Testprint" + str);
+				wordList.put(str, new Word(str));
 			}
 			
 			
