@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class WordLadders {
-	// Vi behöver kanske en klass node och en klass edge för att hålla reda på skit, oklart.
 	HashMap<String, Word> words;
 
 	public WordLadders() {
@@ -24,6 +23,7 @@ public class WordLadders {
 	 * @param s1 
 	 * @return true if edge, otherwise false
 	 */
+	//TODO: Fix solid null-objects here. Use '\0'?
 	public boolean isNeighbors(String s1, String s2) {
 		char[] a = s1.substring(1, s2.length()).toCharArray();
 		char[] b = s2.toCharArray();
@@ -33,7 +33,6 @@ public class WordLadders {
 				if (a[i] == b[j]) {
 					b[j] = ' ';
 					a[i] = '\\';
-					//TODO: Fix solid null-objects here. Use '\0'?
 					count++;
 				}
 			}
@@ -44,12 +43,12 @@ public class WordLadders {
 		}
 		return false;
 	}
-
-	public int findClosestPath(String start, String goal) {
+	
+	public int findShortestPath(String start, String goal) {
 		LinkedList<Word> Queue= new LinkedList<Word>();
 		Word currentWord = words.get(start);
 		currentWord.setDepth(0);
-		Word goalWord = currentWord;
+		Word goalWord = words.get(goal);
 		Queue.add(currentWord);
 		while(!Queue.isEmpty()){
 			if(currentWord.isChecked()){
@@ -59,7 +58,7 @@ public class WordLadders {
 			ArrayList<Word>children = currentWord.getNeighbours();
 			for(Word w : children){
 				if(w.equals(goalWord)){
-					return w.getDepth();
+					return currentWord.getDepth() + 1;
 				}
 				Queue.add(w);
 				w.setDepth(currentWord.getDepth() + 1);
@@ -68,7 +67,7 @@ public class WordLadders {
 			currentWord = Queue.poll();
 		}
 		
-		return 0;
+		return -1;
 	}
 
 }

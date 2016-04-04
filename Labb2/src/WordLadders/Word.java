@@ -12,6 +12,7 @@ public class Word {
 
 	public Word(String name) {
 		this.name = name;
+		neighbours = new ArrayList<Word>();
 	}
 
 	public ArrayList<Word> getNeighbours() {
@@ -61,5 +62,10 @@ public class Word {
 	
 	public void setDepth(int i){
 		depth = i;
+	}
+	
+	@Override
+	public String toString(){
+		return name;
 	}
 }
