@@ -33,7 +33,9 @@ public class WordLadders {
 			String lastFour = entry.getValue().getLastFour();
 			if (neighborFinder.containsKey(lastFour)) {
 				for (Word w : neighborFinder.get(lastFour)) {
-					w.addNeighbour(entry.getValue());
+					if(!w.equals(entry.getValue())){
+						w.addNeighbour(entry.getValue());
+					}
 				}
 			}
 		}
