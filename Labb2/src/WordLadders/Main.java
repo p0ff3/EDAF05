@@ -11,5 +11,7 @@ public class Main {
 		System.out.print(result +"\n");
 		wl.words.put("whera", new Word("whera"));
 		wl.makeNeighborFinder();
+		Word w = new Word("thare");
+		System.out.println(w.getLastFour());
 	}
 }

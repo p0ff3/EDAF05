@@ -1,6 +1,7 @@
 package WordLadders;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class Word {
@@ -67,5 +68,16 @@ public class Word {
 	@Override
 	public String toString(){
 		return name;
+	}
+	
+	public String getLastFour(){
+		char[] c = name.toCharArray();
+		char[] c2 = Arrays.copyOfRange(c, 1, 5);
+		Arrays.sort(c2);
+		StringBuilder sb = new StringBuilder();
+		for(char kappa : c2){
+			sb.append(kappa);
+		}
+		return sb.toString();
 	}
 }

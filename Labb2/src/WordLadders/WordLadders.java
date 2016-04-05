@@ -9,7 +9,8 @@ import java.util.Map;
 
 public class WordLadders {
 	HashMap<String, Word> words;
-	HashMap<String, LinkedList<Word>> neighborFinder;
+	// 5x the size of words, got all possible sorted 4 letter combinations of the 5 letter words.
+	HashMap<String, LinkedList<Word>> neighborFinder; 
 
 	public WordLadders() {
 		words = new HashMap<String, Word>();
@@ -24,7 +25,9 @@ public class WordLadders {
 
 	// TODO: Fixa så alla orden får sina grannar tilldelade.
 	private void setNeighbours() {
-
+		for (Map.Entry<String, Word> entry : words.entrySet()){
+			
+		}
 	}
 
 	/**
