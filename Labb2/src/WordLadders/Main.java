@@ -8,6 +8,8 @@ public class Main {
 		// wl.readWordsFromFile("noInternets.txt");
 		boolean result;
 		result = wl.isNeighbors("where","there");
-		System.out.print(result);
+		System.out.print(result +"\n");
+		wl.words.put("whera", new Word("whera"));
+		wl.makeNeighborFinder();
 	}
 }
