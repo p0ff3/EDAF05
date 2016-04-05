@@ -9,9 +9,9 @@ public class Main {
 		boolean result;
 		result = wl.isNeighbors("where","there");
 		System.out.print(result +"\n");
-		wl.words.put("whera", new Word("whera"));
+		wl.words.put("where", new Word("where"));
 		wl.makeNeighborFinder();
-		Word w = new Word("thare");
+		Word w = new Word("where");
 		System.out.println(w.getLastFour());
 	}
 }

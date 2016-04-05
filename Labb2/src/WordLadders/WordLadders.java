@@ -9,8 +9,9 @@ import java.util.Map;
 
 public class WordLadders {
 	HashMap<String, Word> words;
-	// 5x the size of words, got all possible sorted 4 letter combinations of the 5 letter words.
-	HashMap<String, LinkedList<Word>> neighborFinder; 
+	// 5x the size of words, got all possible sorted 4 letter combinations of
+	// the 5 letter words.
+	HashMap<String, LinkedList<Word>> neighborFinder;
 
 	public WordLadders() {
 		words = new HashMap<String, Word>();
@@ -24,9 +25,17 @@ public class WordLadders {
 	}
 
 	// TODO: Fixa så alla orden får sina grannar tilldelade.
+	// Är det verkligen så simpelt? Nu lägger vi nog till alla kanter dubbla
+	// gånger.
+	// Är det nödvändigt att checka om den redan finns?
 	private void setNeighbours() {
-		for (Map.Entry<String, Word> entry : words.entrySet()){
-			
+		for (Map.Entry<String, Word> entry : words.entrySet()) {
+			String lastFour = entry.getValue().getLastFour();
+			if (neighborFinder.containsKey(lastFour)) {
+				for (Word w : neighborFinder.get(lastFour)) {
+					w.addNeighbour(entry.getValue());
+				}
+			}
 		}
 	}
 
@@ -84,31 +93,37 @@ public class WordLadders {
 
 		return -1;
 	}
+
 	// Verkar faktiskt funka. Om man bortser från dubbla bokstäver.
 	public void makeNeighborFinder() {
 		for (Map.Entry<String, Word> entry : words.entrySet()) {
 			String word = entry.getKey();
 			char[] wordArray = word.toCharArray();
 			Arrays.sort(wordArray);
-			//How to handle dubbla bokstaver, tex 2 "a"
+			// How to handle dubbla bokstaver, tex 2 "a"
 			for (int i = 0; i < 5; i++) {
 				StringBuilder sb = new StringBuilder();
-				for (char c : wordArray) {
-					if (!(wordArray[i] == c)) {
-						sb.append(c);
+				for (int j = 0; j < 5; j++) {
+					if (j != i) {
+						sb.append(wordArray[j]);
 					}
 				}
 				System.out.println(sb.toString());
 				if (!(neighborFinder.containsKey(sb.toString()))) {
 					neighborFinder.put(sb.toString(), new LinkedList<Word>());
 					neighborFinder.get(sb.toString()).add(entry.getValue());
-				} else{
+				} else {
 					neighborFinder.get(sb.toString()).add(entry.getValue());
 				}
-				
+
 			}
-			System.out.println(neighborFinder.get("aehw").getFirst().toString());
+			System.out
+					.println(neighborFinder.get("eehw").getFirst().toString());
 		}
+	}
+
+	public void testPrint() {
+
 	}
 
 }
