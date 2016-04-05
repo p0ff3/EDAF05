@@ -7,21 +7,20 @@ import java.util.Arrays;
 public class Word {
 
 	private String name;
-	private ArrayList<Word> neighbours;
-	private boolean isChecked = false;
+	private ArrayList<Word> adjacentWords;
 	private int depth;
 
 	public Word(String name) {
 		this.name = name;
-		neighbours = new ArrayList<Word>();
+		adjacentWords = new ArrayList<Word>();
 	}
 
 	public ArrayList<Word> getNeighbours() {
-		return neighbours;
+		return adjacentWords;
 	}
 
 	public void addNeighbour(Word neighbour) {
-		this.neighbours.add(neighbour);
+		this.adjacentWords.add(neighbour);
 	}
 
 	@Override
@@ -47,14 +46,6 @@ public class Word {
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
-	}
-
-	public void check() {
-		isChecked = true;
-		
-	}
-	public boolean isChecked(){
-		return isChecked;
 	}
 
 	public int getDepth() {

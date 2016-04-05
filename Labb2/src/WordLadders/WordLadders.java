@@ -9,8 +9,6 @@ import java.util.Map;
 
 public class WordLadders {
 	HashMap<String, Word> words;
-	// 5x the size of words, got all possible sorted 4 letter combinations of
-	// the 5 letter words.
 	HashMap<String, LinkedList<Word>> neighborFinder;
 
 	public WordLadders() {
@@ -29,12 +27,14 @@ public class WordLadders {
 	// gånger.
 	// Är det nödvändigt att checka om den redan finns?
 	private void setNeighbours() {
+		makeNeighborFinder();
 		for (Map.Entry<String, Word> entry : words.entrySet()) {
 			String lastFour = entry.getValue().getLastFour();
 			if (neighborFinder.containsKey(lastFour)) {
 				for (Word w : neighborFinder.get(lastFour)) {
-					if(!w.equals(entry.getValue())){
-						w.addNeighbour(entry.getValue());
+					//System.out.println(entry.getValue() + " has possible neighbours " + neighborFinder.get(lastFour));
+					if (!w.equals(entry.getValue())) {
+						entry.getValue().addNeighbour(w);
 					}
 				}
 			}
@@ -71,25 +71,33 @@ public class WordLadders {
 	}
 
 	public int findShortestPath(String start, String goal) {
+		if(start.equals(goal)){
+			return 0;
+		}
 		LinkedList<Word> Queue = new LinkedList<Word>();
+		HashMap<Word, Boolean> checked = new HashMap<Word, Boolean>();
 		Word currentWord = words.get(start);
 		currentWord.setDepth(0);
 		Word goalWord = words.get(goal);
 		Queue.add(currentWord);
 		while (!Queue.isEmpty()) {
-			if (currentWord.isChecked()) {
+			if (checked.get(currentWord) != null) {
 				currentWord = Queue.poll();
 				continue;
 			}
 			ArrayList<Word> children = currentWord.getNeighbours();
+			System.out.println(currentWord + " has children: " + children);
 			for (Word w : children) {
+				System.out.println(w + " " + (checked.get(w)));
+				System.out.println("queue: " + Queue);
+				
 				if (w.equals(goalWord)) {
 					return currentWord.getDepth() + 1;
 				}
 				Queue.add(w);
 				w.setDepth(currentWord.getDepth() + 1);
 			}
-			currentWord.check();
+			checked.put(currentWord, true);
 			currentWord = Queue.poll();
 		}
 
@@ -102,7 +110,6 @@ public class WordLadders {
 			String word = entry.getKey();
 			char[] wordArray = word.toCharArray();
 			Arrays.sort(wordArray);
-			// How to handle dubbla bokstaver, tex 2 "a"
 			for (int i = 0; i < 5; i++) {
 				StringBuilder sb = new StringBuilder();
 				for (int j = 0; j < 5; j++) {
@@ -110,7 +117,6 @@ public class WordLadders {
 						sb.append(wordArray[j]);
 					}
 				}
-				System.out.println(sb.toString());
 				if (!(neighborFinder.containsKey(sb.toString()))) {
 					neighborFinder.put(sb.toString(), new LinkedList<Word>());
 					neighborFinder.get(sb.toString()).add(entry.getValue());
@@ -119,13 +125,6 @@ public class WordLadders {
 				}
 
 			}
-			System.out
-					.println(neighborFinder.get("eehw").getFirst().toString());
 		}
 	}
-
-	public void testPrint() {
-
-	}
-
 }
