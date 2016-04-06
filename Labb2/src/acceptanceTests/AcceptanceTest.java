@@ -18,9 +18,9 @@ public class AcceptanceTest {
 		WordLadders wl = new WordLadders();
 		wl.readWordsFromFile("testFiles/words-10.txt");
 		BufferedReader br1 = new BufferedReader(new FileReader(
-				"Labb2/testFiles/words-10-in.txt"));
+				"testFiles/words-10-in.txt"));
 		BufferedReader br2 = new BufferedReader(new FileReader(
-				"Labb2/testFiles/words-10-out.txt"));
+				"testFiles/words-10-out.txt"));
 		String str = "";
 		String str1 = "";
 		while ((str = br1.readLine()) != null
