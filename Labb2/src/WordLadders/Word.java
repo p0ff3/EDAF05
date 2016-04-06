@@ -1,34 +1,25 @@
 package WordLadders;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.util.LinkedList;
 
 public class Word {
 
 	private String name;
-	private ArrayList<Word> adjacentWords;
+	private LinkedList<Word> adjacentWords;
 	private int depth;
 
 	public Word(String name) {
 		this.name = name;
-		adjacentWords = new ArrayList<Word>();
+		adjacentWords = new LinkedList<Word>();
 	}
 
-	public ArrayList<Word> getNeighbours() {
+	public LinkedList<Word> getNeighbours() {
 		return adjacentWords;
 	}
 
 	public void addNeighbour(Word neighbour) {
 		this.adjacentWords.add(neighbour);
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
 	}
 
 	@Override
@@ -51,22 +42,22 @@ public class Word {
 	public int getDepth() {
 		return depth;
 	}
-	
-	public void setDepth(int i){
+
+	public void setDepth(int i) {
 		depth = i;
 	}
-	
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return name;
 	}
-	
-	public String getLastFour(){
+
+	public String getLastFour() {
 		char[] c = name.toCharArray();
 		char[] c2 = Arrays.copyOfRange(c, 1, 5);
 		Arrays.sort(c2);
 		StringBuilder sb = new StringBuilder();
-		for(char kappa : c2){
+		for (char kappa : c2) {
 			sb.append(kappa);
 		}
 		return sb.toString();

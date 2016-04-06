@@ -6,9 +6,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import WordLadders.WordLadders;
+
 public class AcceptanceTest {
 
 	@Test
@@ -31,7 +33,7 @@ public class AcceptanceTest {
 	}
 
 	@Test
-	public void testManyWords() throws IOException {
+	public void test250Words() throws IOException {
 		WordLadders wl = new WordLadders();
 		wl.readWordsFromFile("testFiles/words-250.txt");
 		BufferedReader br1 = new BufferedReader(new FileReader(
@@ -48,8 +50,9 @@ public class AcceptanceTest {
 					Integer.parseInt(str1), dist);
 		}
 	}
+
 	@Test
-	public void testSoManyWords() throws IOException {
+	public void test5757Words() throws IOException {
 		WordLadders wl = new WordLadders();
 		wl.readWordsFromFile("testFiles/words-5757.txt");
 		BufferedReader br1 = new BufferedReader(new FileReader(
