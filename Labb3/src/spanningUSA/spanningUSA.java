@@ -13,5 +13,9 @@ public class spanningUSA {
 	public void readCitiesFromFile(String path){
 		
 	}
+	//O(n+m) vore bra, vi kan börja med O(n^2)
+	private void setNeighbors(){
+		
+	}
 	
 }
