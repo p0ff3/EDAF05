@@ -1,5 +1,6 @@
 package spanningUSA;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,8 +11,9 @@ public class spanningUSA {
 		cities = new HashMap<String, City>();
 	}
 	
-	public void readCitiesFromFile(String path){
-		
+	public void readCitiesFromFile(String path) throws IOException{
+		Parser p = new Parser(path);
+		cities = p.Parse();
 	}
 	
 }
