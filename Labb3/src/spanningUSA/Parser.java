@@ -18,18 +18,21 @@ public class Parser {
 			while ((str = br.readLine()) != null) {
 				if (!str.contains("[")) {
 					cityMap.put(str.trim(), new City(str));
-				} else { // Har ska vi läsa en stad, Lägga in den andra staden
-							// och distans dit i den stadens HashMap,
+				} else {
 					int index = str.indexOf("--");
 					String cityName = str.substring(0, index); // index-1?
-					String targetCity = str.substring(index + 2,str.lastIndexOf(" "));
+					String targetCity = str.substring(index + 2,
+							str.lastIndexOf(" "));
 					String distance = str.substring(str.indexOf("[") + 1,
 							str.indexOf("]"));
 					int nbrDistance = Integer.parseInt(distance);
 					City temp;
 					temp = cityMap.get(cityName);
-					
-					temp.addToCityNeighborMap(cityMap.get(targetCity),nbrDistance);
+
+					temp.addToCityNeighborMap(cityMap.get(targetCity),
+							nbrDistance);
+					cityMap.get(targetCity).addToCityNeighborMap(temp,
+							nbrDistance);
 				}
 			}
 

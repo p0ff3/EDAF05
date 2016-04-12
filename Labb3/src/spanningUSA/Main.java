@@ -16,7 +16,7 @@ public class Main {
 			System.out.println("Fel på pathen din bög.");
 		}
 		SpanningUSA spann = new SpanningUSA();
-		System.out.println(spann.getMstWeight(cities, "\"San Diego\""));
+		System.out.println(spann.getMstWeight(cities, "Sterling"));
 
 	}
 
