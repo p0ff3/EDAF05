@@ -13,5 +13,9 @@ public class City {
 		this.name = name;
 		neighborCities = new HashMap<Integer, String>();
 	}
+	
+	public void addToCityNeighborMap(String name, int distance){
+		neighborCities.put(distance, name);
+	}
 }
 	
