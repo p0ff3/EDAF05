@@ -1,21 +1,34 @@
 package spanningUSA;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedList;
 
 public class City {
 
-	String name;
-	//Lista med grannstäder, key är distans, value är namnet på staden/skulle kunna ha object City också.
-	Map<Integer, String> neighborCities;
-	
-	public City(String name){
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+	private String name;
+	private LinkedList<Road> neighborCities;
+
+	public City(String name) {
 		this.name = name;
-		neighborCities = new HashMap<Integer, String>();
+		neighborCities = new LinkedList<Road>();
+	}
+
+	public void addToCityNeighborMap(City dest, int distance) {
+		neighborCities.add(new Road(dest, distance));
 	}
 	
-	public void addToCityNeighborMap(String name, int distance){
-		neighborCities.put(distance, name);
+	public String toString(){
+		return name;
+	}
+	
+	public LinkedList<Road> getNeighbors(){
+		return neighborCities;
 	}
 }
-	
