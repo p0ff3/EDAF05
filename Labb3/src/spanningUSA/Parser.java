@@ -10,21 +10,26 @@ public class Parser {
 		this.path = path;
 	}
 
-	// Oklart vad vi vill returnera
-	public HashMap<String, Word> Parse() throws IOException {
-		HashMap<String, Word> wordList = new HashMap<String, Word>();
+	// Läs skit
+	public HashMap<String, City> Parse() throws IOException {
+		HashMap<String, City> cityMap = new HashMap<String, City>();
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(path));
 			String str;
 			while ((str = br.readLine()) != null) {
-				wordList.put(str, new Word(str));
+				if (!str.contains("[")) {
+					cityMap.put(str, new City(str));
+				} else {							//Har ska vi läsa en stad, Lägga in den andra staden
+													// och distans dit i den stadens HashMap, 
+					
+				}
 			}
 
 		} catch (FileNotFoundException e) {
 			System.out.println("Filen hittades inte.");
 			e.printStackTrace();
 		}
-		return wordList;
+		return cityMap;
 
 	}
 }
