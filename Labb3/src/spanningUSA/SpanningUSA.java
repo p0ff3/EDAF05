@@ -14,20 +14,22 @@ public class SpanningUSA {
 		City currentCity = cities.get(start);
 		Road currentRoad = null;
 		PriorityQueue<Road> pq = new PriorityQueue<Road>();
-		mst.put(currentCity, 1);
+		mst.put(currentCity, 0);
 		pq.addAll(currentCity.getNeighbors());
-		int mstWeight = 0;
+		int weight = 0;
 		while (!pq.isEmpty()) {
 			currentRoad = pq.poll();
 			if (mst.get(currentRoad.getDestination()) != null) {
 				continue;
 			}
 			System.out.println(currentRoad.getSource() + " -- " + currentRoad.getDestination());
-			mst.put(currentRoad.getDestination(), 1);
+			mst.put(currentRoad.getDestination(), currentRoad.getWeight());
 			pq.addAll(currentRoad.getDestination().getNeighbors());
-			mstWeight += currentRoad.getWeight();
 		}
-		return mstWeight;
+		for(int i : mst.values()){
+			weight = weight + i;
+		}
+		return weight;
 	}
 
 }
