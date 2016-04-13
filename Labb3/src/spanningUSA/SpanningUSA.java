@@ -1,15 +1,26 @@
 package spanningUSA;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
 public class SpanningUSA {
-
+	HashMap<String, City> cities;
 	public SpanningUSA() {
-
+		cities = null;
 	}
 
-	public int getMstWeight(HashMap<String, City> cities, String start) {
+	public void initiateGraph(){
+		Parser p = new Parser("highWays.txt");
+		try {
+			cities = p.Parse();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("Wrong path");
+		}
+	}
+	
+	public int getMstWeight(String start) {
 		HashMap<City, Integer> mst = new HashMap<City, Integer>();
 		City currentCity = cities.get(start);
 		Road currentRoad = null;

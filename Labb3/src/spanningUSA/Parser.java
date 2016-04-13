@@ -35,6 +35,7 @@ public class Parser {
 							nbrDistance);
 				}
 			}
+			br.close();
 
 		} catch (FileNotFoundException e) {
 			System.out.println("Filen hittades inte.");
