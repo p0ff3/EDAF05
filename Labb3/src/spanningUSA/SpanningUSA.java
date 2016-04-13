@@ -22,12 +22,10 @@ public class SpanningUSA {
 			if (mst.get(currentRoad.getDestination()) != null) {
 				continue;
 			}
+			System.out.println(currentRoad.getSource() + " -- " + currentRoad.getDestination());
 			mst.put(currentRoad.getDestination(), 1);
 			pq.addAll(currentRoad.getDestination().getNeighbors());
 			mstWeight += currentRoad.getWeight();
-		}
-		for (City c : mst.keySet()) {
-			System.out.println(c);
 		}
 		return mstWeight;
 	}

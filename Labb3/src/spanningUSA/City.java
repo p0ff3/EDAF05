@@ -3,6 +3,8 @@ package spanningUSA;
 import java.util.LinkedList;
 
 public class City {
+	private String name;
+	private LinkedList<Road> neighborCities;
 
 	@Override
 	public int hashCode() {
@@ -12,23 +14,20 @@ public class City {
 		return result;
 	}
 
-	private String name;
-	private LinkedList<Road> neighborCities;
-
 	public City(String name) {
 		this.name = name;
 		neighborCities = new LinkedList<Road>();
 	}
 
 	public void addToCityNeighborMap(City dest, int distance) {
-		neighborCities.add(new Road(dest, distance));
+		neighborCities.add(new Road(dest, this, distance));
 	}
-	
-	public String toString(){
+
+	public String toString() {
 		return name;
 	}
-	
-	public LinkedList<Road> getNeighbors(){
+
+	public LinkedList<Road> getNeighbors() {
 		return neighborCities;
 	}
 }

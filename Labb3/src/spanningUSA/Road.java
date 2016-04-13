@@ -2,11 +2,13 @@ package spanningUSA;
 
 public class Road implements Comparable{
 	private int weight;
-	private City destination;
+	private City destination, source;
+	
 
-	public Road(City destination, int weight){
+	public Road(City destination, City source, int weight){
 		this.weight = weight;
 		this.destination = destination;
+		this.source = source;
 	}
 
 	public int getWeight() {
@@ -15,6 +17,10 @@ public class Road implements Comparable{
 
 	public City getDestination() {
 		return destination;
+	}
+	
+	public City getSource(){
+		return source;
 	}
 	
 	private int compareTo(Road r){
