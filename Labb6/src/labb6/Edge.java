@@ -29,8 +29,7 @@ public class Edge {
 	}
 
 	public int getPotentialFlow() {
-		// TODO Auto-generated method stub
-		return 0;
+		return initialCapacity - getFlow();
 	}
 	
 }
