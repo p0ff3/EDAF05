@@ -40,7 +40,7 @@ public class Parser {
 			}
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("KappaPride");
 			e.printStackTrace();
 		}
 		return list;

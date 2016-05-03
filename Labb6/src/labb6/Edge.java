@@ -29,5 +29,11 @@ public class Edge {
 			return capacityFromA;
 		}
 		return capacityFromB;
+
 	}
+	
+	public String toString(){
+		return NodeA.toString() + " " + NodeB.toString() + "  -  " + capacityFromA + " " + capacityFromB; 
+	}
+	
 }

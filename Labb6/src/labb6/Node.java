@@ -10,10 +10,15 @@ public class Node {
 	public Node(String id, String name) {
 		this.id = id;
 		this.name = name;
+		edgeList = new ArrayList<Edge>();
 	}
 
 	public void addEdge(Edge e) {
 		edgeList.add(e);
+	}
+	
+	public String toString(){
+		return name;
 	}
 
 	public ArrayList<Node> getNeighbours(Node source) {
