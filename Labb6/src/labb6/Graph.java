@@ -14,6 +14,7 @@ public class Graph {
 		int flow = 0;
 		path = getAFlow(source, sink, new ArrayList<Edge>());
 		while (path != null) {
+			System.out.println(flow);
 			path = getAFlow(source, sink, new ArrayList<Edge>());
 			int minPotentialFlow = Integer.MAX_VALUE;
 			for(Edge e : path){
@@ -22,7 +23,7 @@ public class Graph {
 				}
 			}
 			for(Edge e : path){
-				
+				e.changeFlow(minPotentialFlow);
 			}
 			
 			flow = flow + minPotentialFlow;
