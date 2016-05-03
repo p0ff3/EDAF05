@@ -28,5 +28,11 @@ public class Edge {
 		if(source == NodeA){
 			
 		}
+		
 	}
+	
+	public String toString(){
+		return NodeA.toString() + " " + NodeB.toString() + "  -  " + capacityFromA + " " + capacityFromB; 
+	}
+	
 }

@@ -11,6 +11,9 @@ public class Main {
 		System.out.println("Skiten är tom");
 		for (Node n : testList){
 			System.out.println(n.toString());
+			for(Edge e : n.getEdges()){
+				System.out.println(e.toString());
+			}
 		}
 	}
 
