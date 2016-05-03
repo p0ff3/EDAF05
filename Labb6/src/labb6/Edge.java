@@ -13,19 +13,14 @@ public class Edge {
 	}
 
 	public Node getDestination(Node source) {
-		if (NodeA == source) {
+		if (NodeA.equals(source)) {
 			return NodeB;
 		}
 		return NodeA;
 	}
 
-	public Node getSource() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public int getCapacity(Node source) {
-		if(source == NodeA){
+		if(source.equals(NodeA)){
 			return capacityFromA;
 		}
 		return capacityFromB;

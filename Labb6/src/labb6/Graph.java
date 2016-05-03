@@ -24,7 +24,7 @@ public class Graph {
 		for(Edge e : source.getEdges()){
 			if(!path.contains(e)){
 				path.add(e);
-				ArrayList<Edge> result = getAFlow(e.getSource(), dest, path);
+				ArrayList<Edge> result = getAFlow(e.getDestination(source), dest, path);
 				if(result != null){
 					return result;
 				}
