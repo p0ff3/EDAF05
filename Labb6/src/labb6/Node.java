@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Node {
 	private String id, name;
 	private ArrayList<Edge> edgeList;
-	private int fakeDistance;
 
 	public Node(String id, String name) {
 		this.id = id;

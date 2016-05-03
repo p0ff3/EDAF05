@@ -1,7 +1,7 @@
 package labb6;
 
 public class Edge {
-	private int capacityFromA, capacityFromB;
+	private int capacityFromA, capacityFromB, initialCapacity;
 	private Node NodeA = null;
 	private Node NodeB = null;
 
@@ -10,6 +10,7 @@ public class Edge {
 		this.NodeB = B;
 		capacityFromB = capacity;
 		capacityFromA = capacity;
+		initialCapacity = capacity;
 	}
 
 	public Node getDestination(Node source) {
@@ -25,6 +26,9 @@ public class Edge {
 		}
 		return capacityFromB;
 
+	}
+	public int getFlow(){
+		return initialCapacity - Math.min(capacityFromA, capacityFromB);
 	}
 	
 	public String toString(){
