@@ -1,8 +1,6 @@
 package labb6;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 
 public class Graph {
 	ArrayList<Node> Nodes = null;
@@ -15,23 +13,25 @@ public class Graph {
 		return 0;
 	}
 
-	public ArrayList<Node> getMinCut(String source, String sink) {
+	public ArrayList<Edge> getMinCut(String source, String sink) {
 		return null;
 	}
 
-	private int breadthFirstSearch(Node source, Node destination) {
-		LinkedList<Edge> Q = new LinkedList<Edge>();
-		int capacity = 0;
-		for (Edge e : source.getEdges()) {
-			Q.add(e);
+	private ArrayList<Edge> getAFlow(Node source, Node dest, ArrayList<Edge> path){
+		if(source == dest){
+			return null;
 		}
-		while (!Q.isEmpty()) {
-			Edge current = Q.pop();
-			source = 
-			capacity += Edge.getCapacity(source);
+		for(Edge e : source.getEdges()){
+			if(!path.contains(e)){
+				path.add(e);
+				ArrayList<Edge> result = getAFlow(e.getSource(), dest, path);
+				if(result != null){
+					return result;
+				}
+			}
+		}
 		
-		}
-		return 0;
+		return null;
 	}
 
 }

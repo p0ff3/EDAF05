@@ -24,9 +24,10 @@ public class Edge {
 		return null;
 	}
 
-	public static int getCapacity(Node source) {
+	public int getCapacity(Node source) {
 		if(source == NodeA){
-			
+			return capacityFromA;
 		}
+		return capacityFromB;
 	}
 }
