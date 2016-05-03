@@ -8,13 +8,16 @@ public class Main {
 		ArrayList<Node> testList = new ArrayList<Node>(); 
 		Parser p = new Parser("testfiles/rail.txt");
 		testList = p.Parse();
-		System.out.println("Skiten är tom");
-		for (Node n : testList){
-			System.out.println(n.toString());
-			for(Edge e : n.getEdges()){
-				System.out.println(e.toString());
-			}
-		}
+		//System.out.println("Skiten är tom");
+		//for (Node n : testList){
+		//	System.out.println(n.toString());
+		//	for(Edge e : n.getEdges()){
+		//		System.out.println(e.toString());
+		//	}
+		// }
+		Graph g = new Graph(testList);
+		System.out.println(g.getMaxFlow(testList.get(0), testList.get(testList.size()-1)));
+		
 	}
 
 }

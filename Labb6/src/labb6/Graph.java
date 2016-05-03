@@ -9,27 +9,32 @@ public class Graph {
 		Nodes = NodeList;
 	}
 
-	public int getMaxFlow(String source, String sink) {
-		return 0;
-	}
-
-	public ArrayList<Edge> getMinCut(Node source, Node sink) {
-		ArrayList<Edge> path = null;
+	public int getMaxFlow(Node source, Node sink) {
+		ArrayList<Edge> path = new ArrayList<Edge>();
+		int flow = 0;
+		path = getAFlow(source, sink, new ArrayList<Edge>());
 		while (path != null) {
 			path = getAFlow(source, sink, new ArrayList<Edge>());
 			int minPotentialFlow = Integer.MAX_VALUE;
 			for(Edge e : path){
-				minPotentialFlow = Math.max(minPotentialFlow, e.getPotentialFlow());
+				if(e.getPotentialFlow() < minPotentialFlow){
+					minPotentialFlow = e.getPotentialFlow();
+				}
 			}
+			for(Edge e : path){
+				
+			}
+			
+			flow = flow + minPotentialFlow;
 		}
 
-		return null;
+		return flow;
 	}
 
 	private ArrayList<Edge> getAFlow(Node source, Node dest,
 			ArrayList<Edge> path) {
 		if (source == dest) {
-			return null;
+			return path;
 		}
 		for (Edge e : source.getEdges()) {
 			if (!path.contains(e)) {
