@@ -55,8 +55,8 @@ public class Graph {
 	private ArrayList<Edge> getPath(Node source, Node dest,
 			HashMap<Node, Edge> pairing) {
 		ArrayList<Edge> path = new ArrayList<Edge>();
-		Node tempNode = dest;
-		while(!tempNode.equals(source)){
+		Node tempNode = source;
+		while(!tempNode.equals(dest)){
 			path.add(pairing.get(tempNode));
 			tempNode = pairing.get(tempNode).getDestination(tempNode);
 		}
