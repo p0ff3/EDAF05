@@ -31,6 +31,9 @@ public class Parser {
 					infoInt[rkn] = Integer.parseInt(s);
 					rkn++;
 				}
+				if(infoInt[2] == -1){
+					infoInt[2] = 1000000;
+				}
 				Edge e = new Edge(list.get(infoInt[0]), list.get(infoInt[1]),
 						infoInt[2]);
 				list.get(infoInt[0]).addEdge(e);
