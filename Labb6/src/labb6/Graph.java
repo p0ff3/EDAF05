@@ -24,8 +24,10 @@ public class Graph {
 					minPotentialFlow = e.getPotentialFlow();
 				}
 			}
+			Node n = source;
 			for (Edge e : path) {
-				e.changeFlow(minPotentialFlow);
+				n = e.getDestination(n);
+				e.changeFlow(minPotentialFlow, n);
 			}
 
 			flow = flow + minPotentialFlow;

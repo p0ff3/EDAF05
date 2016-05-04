@@ -34,8 +34,8 @@ public class Edge {
 		return initialCapacity - getFlow();
 	}
 	
-	public void changeFlow(int i){
-		if(capacityFromA >= capacityFromB){
+	public void changeFlow(int i, Node n){
+		if(n.equals(NodeA)){
 			capacityFromB = capacityFromB + i;
 			capacityFromA = capacityFromA - i;
 		} else{
