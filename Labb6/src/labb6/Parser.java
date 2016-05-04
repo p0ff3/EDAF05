@@ -2,7 +2,6 @@ package labb6;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Parser {
 	private String path;

@@ -14,10 +14,10 @@ public class Graph {
 	public int getMaxFlow(Node source, Node sink) {
 		ArrayList<Edge> path = new ArrayList<Edge>();
 		int flow = 0;
-		//path = getAFlow(source, sink, new ArrayList<Edge>());
+		// path = getAFlow(source, sink, new ArrayList<Edge>());
 		while (path != null) {
 			System.out.println(flow);
-			//path = getAFlow(source, sink, new ArrayList<Edge>());
+			// path = getAFlow(source, sink, new ArrayList<Edge>());
 			int minPotentialFlow = Integer.MAX_VALUE;
 			for (Edge e : path) {
 				if (e.getPotentialFlow() < minPotentialFlow) {
@@ -46,8 +46,10 @@ public class Graph {
 				return getPath(source, dest, pairing);
 			}
 			for (Edge e : currentNode.getEdges()) {
-				pairing.put(e.getDestination(currentNode), e);
-				queue.add(e.getDestination(currentNode));
+				if (e.getFlowFromNode(currentNode) != 0) {
+					pairing.put(e.getDestination(currentNode), e);
+					queue.add(e.getDestination(currentNode));
+				}
 			}
 		}
 
@@ -58,7 +60,7 @@ public class Graph {
 			HashMap<Node, Edge> pairing) {
 		ArrayList<Edge> path = new ArrayList<Edge>();
 		Node tempNode = source;
-		while(!tempNode.equals(dest)){
+		while (!tempNode.equals(dest)) {
 			path.add(pairing.get(tempNode));
 			tempNode = pairing.get(tempNode).getDestination(tempNode);
 		}

@@ -21,6 +21,15 @@ public class Edge {
 		}
 		return NodeA;
 	}
+	
+	public int getFlowFromNode(Node n){
+		if(n.equals(NodeA)){
+			return capacityFromA;
+		}
+		else{
+			return capacityFromB;
+		}
+	}
 
 	public int getFlow(){
 		return initialCapacity - Math.min(capacityFromA, capacityFromB);
