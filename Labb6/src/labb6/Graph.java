@@ -16,10 +16,9 @@ public class Graph {
 		int flow = 0;
 		path = bfs(source, sink);
 		while (true) {
-			System.out.println("Fastnar vi här? kappaucino");
 			System.out.println(flow);
 			path = bfs(source, sink);
-			if(path == null){
+			if (path == null) {
 				break;
 			}
 			int minPotentialFlow = Integer.MAX_VALUE;
@@ -29,8 +28,9 @@ public class Graph {
 					minPotentialFlow = e.getFlowFromNode(n);
 				}
 				n = e.getDestination(n);
-				
+
 			}
+			System.out.println("minflow: " + minPotentialFlow);
 			n = source;
 			for (Edge e : path) {
 				n = e.getDestination(n);
@@ -49,13 +49,13 @@ public class Graph {
 		ArrayList<Node> visited = new ArrayList<Node>();
 		queue.add(source);
 		while (!queue.isEmpty()) {
-			System.out.println("Fastnar vi här? keepo");
 			Node currentNode = queue.poll();
 			if (currentNode.equals(dest)) {
 				return getPath(source, dest, pairing);
 			}
 			for (Edge e : currentNode.getEdges()) {
-				if (e.getFlowFromNode(currentNode) != 0 && !(visited.contains(e.getDestination(currentNode)))) {
+				if (e.getFlowFromNode(currentNode) != 0
+						&& !(visited.contains(e.getDestination(currentNode)))) {
 					pairing.put(e.getDestination(currentNode), e);
 					queue.add(e.getDestination(currentNode));
 					visited.add(e.getDestination(currentNode));
@@ -71,7 +71,6 @@ public class Graph {
 		ArrayList<Edge> path = new ArrayList<Edge>();
 		Node tempNode = dest;
 		while (!tempNode.equals(source)) {
-			System.out.println("Fastnar vi här?");
 			path.add(pairing.get(tempNode));
 			tempNode = pairing.get(tempNode).getDestination(tempNode);
 		}

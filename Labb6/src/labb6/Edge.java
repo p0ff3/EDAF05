@@ -1,6 +1,5 @@
 package labb6;
 
-import java.util.HashMap;
 
 public class Edge {
 	private int capacityFromA, capacityFromB, initialCapacity;
@@ -52,7 +51,7 @@ public class Edge {
 			capacityFromA = capacityFromA + i;
 		}
 		if(capacityFromA < 0 || capacityFromB < 0){
-			System.out.println("HUR FAN FICK DU NEGATIVT FLÖDE DIN SLYNA?");
+			System.out.println("CapcityFromA: " + capacityFromA + ". CapacityFromB: " + capacityFromB);
 		}
 		
 	}
