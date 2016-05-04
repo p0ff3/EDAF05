@@ -14,10 +14,10 @@ public class Graph {
 	public int getMaxFlow(Node source, Node sink) {
 		ArrayList<Edge> path = new ArrayList<Edge>();
 		int flow = 0;
-		// path = getAFlow(source, sink, new ArrayList<Edge>());
+		path = bfs(source, sink);
 		while (path != null) {
 			System.out.println(flow);
-			// path = getAFlow(source, sink, new ArrayList<Edge>());
+			path = bfs(source, sink);
 			int minPotentialFlow = Integer.MAX_VALUE;
 			for (Edge e : path) {
 				if (e.getPotentialFlow() < minPotentialFlow) {
