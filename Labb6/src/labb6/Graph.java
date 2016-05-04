@@ -20,8 +20,8 @@ public class Graph {
 			if (path == null) {
 				break;
 			}
-			int minPotentialFlow = Integer.MAX_VALUE;
-			Node n = sink;
+			int minPotentialFlow = 10000000;
+			Node n = source;
 			for (Edge e : path) {
 				if (e.getFlowFromNode(e.getDestination(n)) < minPotentialFlow) {
 					minPotentialFlow = e.getFlowFromNode(e.getDestination(n));
@@ -29,7 +29,7 @@ public class Graph {
 				n = e.getDestination(n);
 
 			}
-			n = sink;
+			n = source;
 			for (Edge e : path) {
 				n = e.getDestination(n);
 				e.changeFlow(minPotentialFlow, n);
@@ -44,27 +44,36 @@ public class Graph {
 	public ArrayList<Edge> findMinCut(Node source) {
 		LinkedList<Node> queue = new LinkedList<Node>();
 		ArrayList<Node> visited = new ArrayList<Node>();
-		Node currentNode = Nodes.get(0);
+		Node currentNode = source;
 		queue.add(currentNode);
 		while (!queue.isEmpty()) {
 			currentNode = queue.poll();
 			for (Edge e : currentNode.getEdges()) {
 				if (!(e.saturated()) && !(visited.contains(e.getDestination(currentNode)))) {
-					queue.add(e.getDestination(currentNode));					
-					visited.add(e.getDestination(currentNode));
+				//	if(e.getFlowFromNode(currentNode) < e.getFlowFromNode(e.getDestination(currentNode))){
+						queue.add(e.getDestination(currentNode));					
+						visited.add(e.getDestination(currentNode));
+						
+				//	}
 				}
 			}
 		}
 		System.out.println(visited);
+	
+		
+		int flower = 0;
 		ArrayList<Edge> minCut = new ArrayList<Edge>();
-		for (Node n : visited) {
+		for (Node n : Nodes) {
 			for (Edge e : n.getEdges()) {
-				if (!(visited.contains(e.getDestination(n)))) {
+				if (!(visited.contains(e.getDestination(n))) && visited.contains(n)) {
 					minCut.add(e);
+					flower = flower + e.getFlow();
+					System.out.println(e.getFlow() + "  " + e.toString());
+					
 				}
 			}
 		}
-
+		System.out.println(flower);
 		return minCut;
 	}
 

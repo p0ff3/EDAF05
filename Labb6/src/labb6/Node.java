@@ -29,7 +29,6 @@ public class Node {
 	}
 
 	public ArrayList<Edge> getEdges() {
-		// TODO Auto-generated method stub
 		return edgeList;
 	}
 

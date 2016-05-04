@@ -3,8 +3,8 @@ package labb6;
 
 public class Edge {
 	private int capacityFromA, capacityFromB, initialCapacity;
-	private Node NodeA = null;
-	private Node NodeB = null;
+	private Node NodeA;
+	private Node NodeB;
 
 	public Edge(Node A, Node B, int capacity) {
 		this.NodeA = A;
@@ -30,6 +30,10 @@ public class Edge {
 		}
 	}
 
+	public int getInitCap(){
+		return initialCapacity;
+	}
+	
 	public int getFlow(){
 		return initialCapacity - Math.min(capacityFromA, capacityFromB);
 	}
@@ -43,7 +47,7 @@ public class Edge {
 	}
 	
 	public boolean saturated(){
-		if(capacityFromA == 0 || capacityFromA == 0){
+		if(getFlow() == initialCapacity){
 			return true;
 		}
 		return false;
@@ -53,9 +57,11 @@ public class Edge {
 		if(n.equals(NodeA)){
 			capacityFromB = capacityFromB + i;
 			capacityFromA = capacityFromA - i;
-		} else{
+		} else if(n.equals(NodeB)){
 			capacityFromB = capacityFromB - i;
 			capacityFromA = capacityFromA + i;
+		} else{
+			System.out.println("wtf dude");
 		}
 		if(capacityFromA < 0 || capacityFromB < 0){
 			System.out.println("CapcityFromA: " + capacityFromA + ". CapacityFromB: " + capacityFromB);
