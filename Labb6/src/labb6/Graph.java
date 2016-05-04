@@ -40,31 +40,32 @@ public class Graph {
 
 		return flow;
 	}
-	
-	public ArrayList<Edge> findMinCut(Node source){
+
+	public ArrayList<Edge> findMinCut(Node source) {
 		ArrayList<Edge> minList = new ArrayList<Edge>();
 		LinkedList<Node> queue = new LinkedList<Node>();
 		ArrayList<Node> visited = new ArrayList<Node>();
 		queue.add(source);
-		while(!queue.isEmpty()){
-			System.out.println("Ballar det här");
+		while (!queue.isEmpty()) {
 			Node currentNode = queue.poll();
-			for(Edge e : currentNode.getEdges()){
-				if(!(e.getFlow() == 0)){
-					queue.add(e.getDestination(currentNode));
-					visited.add(currentNode);
+			if (!visited.contains(currentNode)) {
+				for (Edge e : currentNode.getEdges()) {
+					if (!(e.getFlow() == 0)) {
+						queue.add(e.getDestination(currentNode));
+						visited.add(currentNode);
+					}
 				}
 			}
 		}
 		ArrayList<Edge> minCut = new ArrayList<Edge>();
-		for(Node n : Nodes){
-			for(Edge e : n.getEdges()){
-				if(!(visited.contains(e.getDestination(n)))){
+		for (Node n : Nodes) {
+			for (Edge e : n.getEdges()) {
+				if (!(visited.contains(e.getDestination(n)))) {
 					minCut.add(e);
 				}
 			}
 		}
-		
+
 		return minCut;
 	}
 
