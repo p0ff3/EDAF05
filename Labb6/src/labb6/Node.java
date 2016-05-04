@@ -63,5 +63,9 @@ public class Node {
 			return false;
 		return true;
 	}
+	
+	public int getId(){
+		return Integer.parseInt(id);
+	}
 
 }
