@@ -17,7 +17,7 @@ public class Node {
 	}
 
 	public String toString() {
-		return name;
+		return id;
 	}
 
 	public ArrayList<Node> getNeighbours(Node source) {

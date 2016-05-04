@@ -42,23 +42,22 @@ public class Graph {
 	}
 
 	public ArrayList<Edge> findMinCut(Node source) {
-		ArrayList<Edge> minList = new ArrayList<Edge>();
 		LinkedList<Node> queue = new LinkedList<Node>();
 		ArrayList<Node> visited = new ArrayList<Node>();
-		queue.add(source);
+		Node currentNode = Nodes.get(0);
+		queue.add(currentNode);
 		while (!queue.isEmpty()) {
-			Node currentNode = queue.poll();
-			if (!visited.contains(currentNode)) {
-				for (Edge e : currentNode.getEdges()) {
-					if (!(e.getFlow() == 0)) {
-						queue.add(e.getDestination(currentNode));
-						visited.add(currentNode);
-					}
+			currentNode = queue.poll();
+			for (Edge e : currentNode.getEdges()) {
+				if (!(e.saturated()) && !(visited.contains(e.getDestination(currentNode)))) {
+					queue.add(e.getDestination(currentNode));					
+					visited.add(e.getDestination(currentNode));
 				}
 			}
 		}
+		System.out.println(visited);
 		ArrayList<Edge> minCut = new ArrayList<Edge>();
-		for (Node n : Nodes) {
+		for (Node n : visited) {
 			for (Edge e : n.getEdges()) {
 				if (!(visited.contains(e.getDestination(n)))) {
 					minCut.add(e);

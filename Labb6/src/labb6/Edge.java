@@ -35,11 +35,18 @@ public class Edge {
 	}
 	
 	public String toString(){
-		return NodeA.toString() + " " + NodeB.toString() + "  -  " + capacityFromA + " " + capacityFromB; 
+		return NodeA.toString() + " - " + NodeB.toString(); 
 	}
 
 	public int getPotentialFlow() {
 		return initialCapacity - getFlow();
+	}
+	
+	public boolean saturated(){
+		if(capacityFromA == 0 || capacityFromA == 0){
+			return true;
+		}
+		return false;
 	}
 	
 	public void changeFlow(int i, Node n){
