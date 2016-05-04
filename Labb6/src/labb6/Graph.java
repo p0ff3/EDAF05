@@ -41,12 +41,13 @@ public class Graph {
 		return flow;
 	}
 	
-	private ArrayList<Edge> findMinCut(Node source){
+	public ArrayList<Edge> findMinCut(Node source){
 		ArrayList<Edge> minList = new ArrayList<Edge>();
 		LinkedList<Node> queue = new LinkedList<Node>();
 		ArrayList<Node> visited = new ArrayList<Node>();
 		queue.add(source);
 		while(!queue.isEmpty()){
+			System.out.println("Ballar det här");
 			Node currentNode = queue.poll();
 			for(Edge e : currentNode.getEdges()){
 				if(!(e.getFlow() == 0)){

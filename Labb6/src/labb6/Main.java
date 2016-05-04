@@ -17,6 +17,7 @@ public class Main {
 		// }
 		Graph g = new Graph(testList);
 		System.out.println(g.getMaxFlow(testList.get(0), testList.get(testList.size()-1)));
+		System.out.println("kappa" + g.findMinCut(testList.get(0)));
 		
 	}
 
