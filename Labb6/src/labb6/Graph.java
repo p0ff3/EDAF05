@@ -16,22 +16,20 @@ public class Graph {
 		int flow = 0;
 		path = bfs(source, sink);
 		while (true) {
-			System.out.println(flow);
 			path = bfs(source, sink);
 			if (path == null) {
 				break;
 			}
 			int minPotentialFlow = Integer.MAX_VALUE;
-			Node n = source;
+			Node n = sink;
 			for (Edge e : path) {
-				if (e.getFlowFromNode(n) < minPotentialFlow) {
-					minPotentialFlow = e.getFlowFromNode(n);
+				if (e.getFlowFromNode(e.getDestination(n)) < minPotentialFlow) {
+					minPotentialFlow = e.getFlowFromNode(e.getDestination(n));
 				}
 				n = e.getDestination(n);
 
 			}
-			System.out.println("minflow: " + minPotentialFlow);
-			n = source;
+			n = sink;
 			for (Edge e : path) {
 				n = e.getDestination(n);
 				e.changeFlow(minPotentialFlow, n);
