@@ -42,6 +42,9 @@ public class Edge {
 			capacityFromB = capacityFromB - i;
 			capacityFromA = capacityFromA + i;
 		}
+		if(capacityFromA < 0 || capacityFromB < 0){
+			System.out.println("HUR FAN FICK DU NEGATIVT FLÖDE DIN SLYNA?");
+		}
 		
 	}
 }
