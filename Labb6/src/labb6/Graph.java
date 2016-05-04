@@ -1,6 +1,8 @@
 package labb6;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 
 public class Graph {
 	ArrayList<Node> Nodes = null;
@@ -12,43 +14,53 @@ public class Graph {
 	public int getMaxFlow(Node source, Node sink) {
 		ArrayList<Edge> path = new ArrayList<Edge>();
 		int flow = 0;
-		path = getAFlow(source, sink, new ArrayList<Edge>());
+		//path = getAFlow(source, sink, new ArrayList<Edge>());
 		while (path != null) {
 			System.out.println(flow);
-			path = getAFlow(source, sink, new ArrayList<Edge>());
+			//path = getAFlow(source, sink, new ArrayList<Edge>());
 			int minPotentialFlow = Integer.MAX_VALUE;
-			for(Edge e : path){
-				if(e.getPotentialFlow() < minPotentialFlow){
+			for (Edge e : path) {
+				if (e.getPotentialFlow() < minPotentialFlow) {
 					minPotentialFlow = e.getPotentialFlow();
 				}
 			}
-			for(Edge e : path){
+			for (Edge e : path) {
 				e.changeFlow(minPotentialFlow);
 			}
-			
+
 			flow = flow + minPotentialFlow;
 		}
 
 		return flow;
 	}
 
-	private ArrayList<Edge> getAFlow(Node source, Node dest,
-			ArrayList<Edge> path) {
-		if (source == dest) {
-			return path;
-		}
-		for (Edge e : source.getEdges()) {
-			if (!path.contains(e)) {
-				path.add(e);
-				ArrayList<Edge> result = getAFlow(e.getDestination(source),
-						dest, path);
-				if (result != null) {
-					return result;
-				}
+	private ArrayList<Edge> bfs(Node source, Node dest) {
+		HashMap<Node, Edge> pairing = new HashMap<Node, Edge>();
+		LinkedList<Node> queue = new LinkedList<Node>();
+		queue.add(source);
+		while (!queue.isEmpty()) {
+			Node currentNode = queue.poll();
+			if (currentNode.equals(dest)) {
+				return getPath(source, dest, pairing);
+			}
+			for (Edge e : currentNode.getEdges()) {
+				pairing.put(e.getDestination(currentNode), e);
+				queue.add(e.getDestination(currentNode));
 			}
 		}
 
 		return null;
+	}
+
+	private ArrayList<Edge> getPath(Node source, Node dest,
+			HashMap<Node, Edge> pairing) {
+		ArrayList<Edge> path = new ArrayList<Edge>();
+		Node tempNode = dest;
+		while(!tempNode.equals(source)){
+			path.add(pairing.get(tempNode));
+			tempNode = pairing.get(tempNode).getDestination(tempNode);
+		}
+		return path;
 	}
 
 }

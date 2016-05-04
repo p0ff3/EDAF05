@@ -1,5 +1,7 @@
 package labb6;
 
+import java.util.HashMap;
+
 public class Edge {
 	private int capacityFromA, capacityFromB, initialCapacity;
 	private Node NodeA = null;
@@ -42,5 +44,4 @@ public class Edge {
 		}
 		
 	}
-	
 }

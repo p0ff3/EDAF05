@@ -15,13 +15,12 @@ public class Node {
 	public void addEdge(Edge e) {
 		edgeList.add(e);
 	}
-	
-	public String toString(){
+
+	public String toString() {
 		return name;
 	}
 
 	public ArrayList<Node> getNeighbours(Node source) {
-		// TODO Auto-generated method stub
 		ArrayList<Node> neighbours = new ArrayList<Node>();
 		for (Edge e : edgeList) {
 			neighbours.add(e.getDestination(source));
