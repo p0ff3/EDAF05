@@ -32,7 +32,7 @@ public class Parser {
 					rkn++;
 				}
 				if(infoInt[2] == -1){
-					infoInt[2] = 1000000;
+					infoInt[2] = 10000001;
 				}
 				Edge e = new Edge(list.get(infoInt[0]), list.get(infoInt[1]),
 						infoInt[2]);

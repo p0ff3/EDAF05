@@ -14,7 +14,6 @@ public class Graph {
 	public int getMaxFlow(Node source, Node sink) {
 		ArrayList<Edge> path = new ArrayList<Edge>();
 		int flow = 0;
-		path = bfs(source, sink);
 		while (true) {
 			path = bfs(source, sink);
 			if (path == null) {
@@ -41,7 +40,8 @@ public class Graph {
 		return flow;
 	}
 
-	public ArrayList<Edge> findMinCut(Node source) {
+	public ArrayList<Edge> findMinCut(Node source, Node sink) {
+		// Skapa visited0
 		LinkedList<Node> queue = new LinkedList<Node>();
 		ArrayList<Node> visited = new ArrayList<Node>();
 		Node currentNode = source;
@@ -49,31 +49,57 @@ public class Graph {
 		while (!queue.isEmpty()) {
 			currentNode = queue.poll();
 			for (Edge e : currentNode.getEdges()) {
-				if (!(e.saturated()) && !(visited.contains(e.getDestination(currentNode)))) {
-				//	if(e.getFlowFromNode(currentNode) < e.getFlowFromNode(e.getDestination(currentNode))){
-						queue.add(e.getDestination(currentNode));					
-						visited.add(e.getDestination(currentNode));
-						
-				//	}
+				if (!(e.saturated())
+						&& !(visited.contains(e.getDestination(currentNode)))) {
+					// if(e.getFlowFromNode(currentNode) <
+					// e.getFlowFromNode(e.getDestination(currentNode))){
+					queue.add(e.getDestination(currentNode));
+					visited.add(e.getDestination(currentNode));
+
+					// }
 				}
 			}
 		}
-		System.out.println(visited);
-	
+
+		// Skapa visited1
 		
+		queue = new LinkedList<Node>();
+		ArrayList<Node> visited1 = new ArrayList<Node>();
+		currentNode = sink;
+		queue.add(currentNode);
+		while (!queue.isEmpty()) {
+			currentNode = queue.poll();
+			for (Edge e : currentNode.getEdges()) {
+				if (!(e.saturated())
+						&& !(visited1.contains(e.getDestination(currentNode)))) {
+					// if(e.getFlowFromNode(currentNode) <
+					// e.getFlowFromNode(e.getDestination(currentNode))){
+					queue.add(e.getDestination(currentNode));
+					visited1.add(e.getDestination(currentNode));
+
+					// }
+				}
+			}
+		}
+
 		int flower = 0;
 		ArrayList<Edge> minCut = new ArrayList<Edge>();
 		for (Node n : Nodes) {
 			for (Edge e : n.getEdges()) {
-				if (!(visited.contains(e.getDestination(n))) && visited.contains(n)) {
-					minCut.add(e);
-					flower = flower + e.getFlow();
-					System.out.println(e.getFlow() + "  " + e.toString());
-					
+				// Kolla visited0
+				//if (!visited.contains(e.getDestination(n))
+					//	&& visited.contains(n)) {
+					// Kolla visited1
+					if (visited1.contains(e.getDestination(n))
+							&& !visited1.contains(n)) {
+						minCut.add(e);
+						flower = flower + e.getFlow();
+					//}
+
 				}
 			}
 		}
-		System.out.println(flower);
+		System.out.println("Calculated flow for min-cut is: " + flower);
 		return minCut;
 	}
 

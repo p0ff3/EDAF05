@@ -39,7 +39,7 @@ public class Edge {
 	}
 	
 	public String toString(){
-		return NodeA.toString() + " - " + NodeB.toString(); 
+		return NodeA.toString() + " - " + NodeB.toString() + " flow: " + getFlow(); 
 	}
 
 	public int getPotentialFlow() {
