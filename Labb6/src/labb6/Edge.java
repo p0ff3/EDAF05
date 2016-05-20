@@ -46,8 +46,8 @@ public class Edge {
 		return initialCapacity - getFlow();
 	}
 	
-	public boolean saturated(){
-		if(getFlow() == initialCapacity){
+	public boolean saturated(Node n){
+		if(getFlowFromNode(n) == 0){
 			return true;
 		}
 		return false;

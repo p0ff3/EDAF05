@@ -40,8 +40,7 @@ public class Graph {
 		return flow;
 	}
 
-	public ArrayList<Edge> findMinCut(Node source, Node sink) {
-		// Skapa visited0
+	public ArrayList<Edge> findMinCut(Node source) {
 		LinkedList<Node> queue = new LinkedList<Node>();
 		ArrayList<Node> visited = new ArrayList<Node>();
 		Node currentNode = source;
@@ -49,35 +48,25 @@ public class Graph {
 		while (!queue.isEmpty()) {
 			currentNode = queue.poll();
 			for (Edge e : currentNode.getEdges()) {
-				if (!(e.saturated())
+				if (!(e.saturated(currentNode))
 						&& !(visited.contains(e.getDestination(currentNode)))) {
-					// if(e.getFlowFromNode(currentNode) <
-					// e.getFlowFromNode(e.getDestination(currentNode))){
 					queue.add(e.getDestination(currentNode));
 					visited.add(e.getDestination(currentNode));
-
-					// }
 				}
 			}
 		}
-
-		// Skapa visited1
 		
 		queue = new LinkedList<Node>();
 		ArrayList<Node> visited1 = new ArrayList<Node>();
-		currentNode = sink;
+		currentNode = source;
 		queue.add(currentNode);
 		while (!queue.isEmpty()) {
 			currentNode = queue.poll();
 			for (Edge e : currentNode.getEdges()) {
-				if (!(e.saturated())
+				if (!(e.saturated(currentNode))
 						&& !(visited1.contains(e.getDestination(currentNode)))) {
-					// if(e.getFlowFromNode(currentNode) <
-					// e.getFlowFromNode(e.getDestination(currentNode))){
 					queue.add(e.getDestination(currentNode));
 					visited1.add(e.getDestination(currentNode));
-
-					// }
 				}
 			}
 		}
@@ -86,16 +75,10 @@ public class Graph {
 		ArrayList<Edge> minCut = new ArrayList<Edge>();
 		for (Node n : Nodes) {
 			for (Edge e : n.getEdges()) {
-				// Kolla visited0
-				//if (!visited.contains(e.getDestination(n))
-					//	&& visited.contains(n)) {
-					// Kolla visited1
 					if (visited1.contains(e.getDestination(n))
 							&& !visited1.contains(n)) {
 						minCut.add(e);
 						flower = flower + e.getFlow();
-					//}
-
 				}
 			}
 		}
