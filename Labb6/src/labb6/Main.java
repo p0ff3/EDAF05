@@ -10,7 +10,7 @@ public class Main {
 		testList = p.Parse();
 		Graph g = new Graph(testList);
 		System.out.println("Maxflow: " + g.getMaxFlow(testList.get(0), testList.get(testList.size()-1)));
-		System.out.println("Mincut: " + g.findMinCut(testList.get(0)));
+		System.out.println("Mincut: " + g.findMinCut(testList.get(testList.size()-1)));
 		
 	}
 
