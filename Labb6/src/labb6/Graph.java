@@ -40,10 +40,10 @@ public class Graph {
 		return flow;
 	}
 
-	public ArrayList<Edge> findMinCut(Node source) {
+	public ArrayList<Edge> findMinCut(Node n) {
 		LinkedList<Node> queue = new LinkedList<Node>();
 		ArrayList<Node> visited = new ArrayList<Node>();
-		Node currentNode = source;
+		Node currentNode = n;
 		queue.add(currentNode);
 		while (!queue.isEmpty()) {
 			currentNode = queue.poll();
@@ -55,28 +55,13 @@ public class Graph {
 				}
 			}
 		}
-		
-		queue = new LinkedList<Node>();
-		ArrayList<Node> visited1 = new ArrayList<Node>();
-		currentNode = source;
-		queue.add(currentNode);
-		while (!queue.isEmpty()) {
-			currentNode = queue.poll();
-			for (Edge e : currentNode.getEdges()) {
-				if (!(e.saturated(currentNode))
-						&& !(visited1.contains(e.getDestination(currentNode)))) {
-					queue.add(e.getDestination(currentNode));
-					visited1.add(e.getDestination(currentNode));
-				}
-			}
-		}
 
 		int flower = 0;
 		ArrayList<Edge> minCut = new ArrayList<Edge>();
-		for (Node n : Nodes) {
-			for (Edge e : n.getEdges()) {
-					if (visited1.contains(e.getDestination(n))
-							&& !visited1.contains(n)) {
+		for (Node node : Nodes) {
+			for (Edge e : node.getEdges()) {
+					if (visited.contains(e.getDestination(node))
+							&& !visited.contains(node	)) {
 						minCut.add(e);
 						flower = flower + e.getFlow();
 				}
